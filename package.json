@@ -1,0 +1,24 @@
+{
+    "name": "blueskyElementLibrary",
+    "productName": "BlueSky Statistics Elements Librarty",
+    "description": "Elements Librarty",
+    "keywords": [],
+    "main": "",
+    "version": "1.0.0",
+    "author": "BlueSky Statistics",
+    "scripts": {},
+    "dependencies": {
+      "squirrelly": "7.9.2"
+    },
+    "devDependencies": {},
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/BlueSkyStatistics/dialogObjectsLibrary.git"
+    },
+    "license": "AGLPL",
+    "bugs": {
+      "url": "https://github.com/BlueSkyStatistics/BlueSkyJS/issues"
+    },
+    "homepage": "https://www.blueskystatistics.com"
+  }
+  
