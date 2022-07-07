@@ -1,6 +1,7 @@
 var Sqrl = require('squirrelly');
+var baseElement = require('./baseElement').baseElement;
 
-class Slider {
+class Slider extends baseElement{
     content;
     id;
     value;
@@ -25,9 +26,10 @@ class Slider {
   </div>`
 
     constructor(modal, config) {
-        this.content = Sqrl.Render(this.htmlTemplate, {modal: modal, ms: config})
-        this.value = config.value;
-        this.id = `${modal.id}_${config.no}`
+      super(modal, config)
+      this.content = Sqrl.Render(this.htmlTemplate, {modal: modal, ms: config})
+      this.value = config.value;
+      this.id = `${modal.id}_${config.no}`
     }
 
     canExecute() {
@@ -38,9 +40,6 @@ class Slider {
         $(`#${this.id}`).val(`${this.value}`)
     }
 
-    getVal() {
-        return $(`#${this.id}`).val();
-    }
 }
 
 module.exports.element = Slider;

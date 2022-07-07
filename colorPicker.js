@@ -1,8 +1,8 @@
 var Sqrl = require('squirrelly');
-const common = require("../library/common")
+var baseElement = require('./baseElement').baseElement;
 
 
-class colorPicker {
+class colorPicker extends baseElement {
     content;
     id;
     value = null;
@@ -30,6 +30,7 @@ class colorPicker {
     </div>`
 
     constructor(modal, config) {
+        super(modal, config);
         this.label = config.label
         if (config.value !== undefined) {
             this.value = config.value;
@@ -49,11 +50,6 @@ class colorPicker {
         this.content = Sqrl.Render(this.htmlTemplate, {modal: modal, ms: config})
         this.id = `${modal.id}_${config.no}`
     }
-    
-    canExecute(refToBaseModal) {
-       
-        return true
-    }
 
     clearContent() {
         if (this.value !== null) {
@@ -62,10 +58,6 @@ class colorPicker {
             $(`#${this.id}`).val("")
         }
         
-    }
-
-    getVal() {
-        return $(`#${this.id}`).val();
     }
 }
 

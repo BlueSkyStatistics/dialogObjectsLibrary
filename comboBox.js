@@ -1,9 +1,9 @@
 
 
 var Sqrl = require('squirrelly');
-const common = require("../library/common")
+var baseElement = require('./baseElement').baseElement;
 
-class comboBox {
+class comboBox extends baseElement{
     content;
     id;
     required = false;
@@ -20,6 +20,7 @@ class comboBox {
     `
 
     constructor(modal, config) {
+        super(modal, config)
         this.label = config.label
         if (config.required) {
             this.required = config.required
@@ -54,16 +55,7 @@ class comboBox {
         dialog.showMessageBoxSync({type: "error", buttons: ["OK"], title: "Combobox control rule violation", message: `You need to make a selection in the Combobox with label: "${this.label}"`})                
         return false
     }
-
-    getVal() {
-        var res = []
-        $($(`#${this.id}`).siblings()[0]).find(".list-group-item.active").each(function(index, item){res.push(item.getAttribute("data-value"))})
-        if (res.length == 1) {
-            return res[0]
-        } else {
-            return res
-        }
-    }
+    
 }
 
 module.exports.element = comboBox;

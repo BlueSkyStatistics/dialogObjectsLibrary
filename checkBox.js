@@ -1,7 +1,7 @@
 
 
 var Sqrl = require('squirrelly');
-var baseElement = require('./baseElement');
+var baseElement = require('./baseElement').baseElement;
 
 class checkBox extends baseElement{
     content;
@@ -27,6 +27,7 @@ class checkBox extends baseElement{
 
 
     constructor(modal, config) {
+        super(modal, config);
         var outer_this = this
         this.label = config.label
         this.state = config.state ? true : false;

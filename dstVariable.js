@@ -1,9 +1,9 @@
 
 
 var Sqrl = require('squirrelly');
-const common = require("../library/common")
+var baseElement = require('./baseElement').baseElement;
 
-class dstVariable {
+class dstVariable extends baseElement{
     content;
     id;
     required = false;
@@ -24,6 +24,7 @@ class dstVariable {
     </div>` 
 
     constructor(modal, config) {
+        super(modal, config)
         this.label = config.label
         if (config.hasOwnProperty("onselect_r"))
         {
@@ -52,9 +53,6 @@ class dstVariable {
         })
     }
 
-    getVal() {
-        return common.getVal(this.id)
-    }
 }
 
 module.exports.element = dstVariable;

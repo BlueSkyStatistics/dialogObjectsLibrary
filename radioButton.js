@@ -1,8 +1,9 @@
 
 
 var Sqrl = require('squirrelly');
+var baseElement = require('./baseElement').baseElement;
 
-class radioButton {
+class radioButton extends baseElement{
     content;
     id;
     radio_id;
@@ -31,6 +32,7 @@ class radioButton {
   `
 
     constructor(modal, config) {
+        super(modal, config);
         this.label = config.label;
         this.default_state = config.state !== "" ? true : false
         var outer_this = this
@@ -74,10 +76,6 @@ class radioButton {
             }
         }
         return res
-    }
-
-    getVal() {
-        return $(`input[name=${this.id}]:checked`).val();
     }
 }
 

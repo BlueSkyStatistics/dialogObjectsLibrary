@@ -1,7 +1,7 @@
 var Sqrl = require('squirrelly');
-const common = require("../library/common")
+var baseElement = require('./baseElement').baseElement;
 
-class formulaControl {
+class formulaControl extends baseElement {
     content;
     id;
     required = false;
@@ -152,6 +152,7 @@ class formulaControl {
     </div>
     `
     constructor(modal, config) {
+        super(modal, config);
         this.label = config.label
         if(!config.hasOwnProperty("default"))
         {
@@ -185,9 +186,6 @@ class formulaControl {
         
     }
 
-    getVal() {
-        return $(`#${this.id}`).val();
-    }
 }
 
 module.exports.element = formulaControl;

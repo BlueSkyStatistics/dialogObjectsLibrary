@@ -1,6 +1,6 @@
 var Sqrl = require('squirrelly');
 
-calls_map_get_val = {
+calls_map = {
     "single": getSingleVal,
     "list": getMultiVal,
     "simpleMeasureList": getFromMeasureList,
@@ -14,7 +14,8 @@ calls_map_get_val = {
     "numeric": getTextVal,
     "character": getTextVal,
     "slider": getTextVal,
-    "combobox": getSelectValue,
+    "combobox": getComboValue,
+    "select": getSelectValue,
     "wrapcontrol": getWrapControl,
     "switchcase": getSwitchCase,
 }
@@ -31,8 +32,6 @@ function getFromMeasureList( id) {
     })
     return res;
 }
-
-
 
 function getSwitchCase(id) {
     var if_elements = $(`#${id}`).children().find('input[bs-type="switchif"')
@@ -131,7 +130,7 @@ function getCheckedRadio(group) {
     return $(`input[name=${group}]:checked`).val();
 }
 
-function getSelectValue(id) {
+function getComboValue(id) {
     var res = []
     if ($(`#${id}`).siblings("ul").length !== 0){
         $($(`#${id}`).siblings()[0]).find(".list-group-item.active").each(
@@ -142,6 +141,24 @@ function getSelectValue(id) {
         res = [$(`#${id}`).val()]
     }
     return res
+}
+
+
+function getSelectValue(id) {
+    var res = []
+    res = $(`#${id}`).val()
+    // res in null when the control is empty
+    if (res != null) {
+        if (res.length == 1) {
+            return res[0]
+        } else {
+            return res
+        }
+    }
+    else {
+    //we return an empty string so that the call this.getVal().length does not create an exception 
+    return "";
+    }
 }
 
 function transform(val, rule) {
@@ -201,6 +218,19 @@ function transform(val, rule) {
         retval = val.toString().toUpperCase();
     }
     return retval
+}
+
+
+function getFromFactorList(id) {
+    let res =[];
+    let str =""
+    let ul = document.getElementById(id).getElementsByTagName('li');    
+    ul.forEach(function (value) {
+        str = value.innerHTML
+        str =str.substring(0, str.indexOf("("));
+        res.push(str);
+    })
+    return res;
 }
 
 

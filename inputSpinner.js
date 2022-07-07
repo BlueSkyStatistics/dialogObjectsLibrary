@@ -1,9 +1,9 @@
 
 
 var Sqrl = require('squirrelly');
-const common = require("../library/common")
+var baseElement = require('./baseElement').baseElement;
 
-class inputSpinner {
+class inputSpinner extends baseElement {
     content;
     id;
     value = null;
@@ -21,6 +21,7 @@ class inputSpinner {
     </div>`
 
     constructor(modal, config) {
+        super(modal, config);
         this.label = config.label;
         if (config.value !== undefined) {
             this.value = config.value;
@@ -65,9 +66,6 @@ class inputSpinner {
         
     }
 
-    getVal() {
-        return $(`#${this.id}`).val();
-    }
 }
 
 module.exports.element = inputSpinner;

@@ -1,5 +1,5 @@
 var Sqrl = require('squirrelly');
-var baseElement = require('./baseElement');
+var baseElement = require('./baseElement').baseElement;
 
 class AdvancedSlider extends baseElement {
     content;
@@ -35,12 +35,9 @@ class AdvancedSlider extends baseElement {
   </div>`
 
     constructor(modal, config) {
+        super(modal, config);
         this.content = Sqrl.Render(this.htmlTemplate, {modal: modal, ms: config})
         this.id = `${modal.id}_${config.no}`
-    }
-
-    canExecute() {
-      return true
     }
 
     clearContent() {

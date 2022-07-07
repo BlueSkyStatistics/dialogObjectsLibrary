@@ -1,6 +1,6 @@
 var Sqrl = require('squirrelly');
-const common = require("./common")
-class wrapControl {
+var baseElement = require('./baseElement').baseElement;
+class wrapControl extends baseElement {
     content;
     id;
     max_values = -1;
@@ -65,6 +65,7 @@ class wrapControl {
     `
 
     constructor(modal, config) {
+        super(modal, config)
         this.label = config.label;
         this.id = `${modal.id}_${config.no}`
         if (config.required) { this.required = config.required }
@@ -73,10 +74,6 @@ class wrapControl {
         this.content = Sqrl.Render(this.htmlTemplate, {modal: modal, ms: config})
     }
 
-    getVal() {
-        return common.getVal(this.id)
-    }
-    
     canExecute(refToBaseModal) {
         if ($(`#${this.id}`).attr("bs-type") === "wrapcontrol" ) {
             if ($(`#${this.id}_input`).val().split(",")[0] != "") {

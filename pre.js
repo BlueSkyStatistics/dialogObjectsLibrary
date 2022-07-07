@@ -15,10 +15,6 @@ class preVar {
     canExecute() {
         return true
     }
-
-    getVal() {
-        return $(`#${this.id}`).text();
-    }
     
     clearContent() {}
 }

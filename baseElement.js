@@ -1,8 +1,10 @@
 const common = require("./common")
 
-module.exports.baseElement = class baseElement {
+class BaseElement {
     id;
     
+    constructor(modal, config) {}
+
     getVal() {
         return common.getVal(this.id)
     }
@@ -12,6 +14,9 @@ module.exports.baseElement = class baseElement {
     }
 
     canExecute(refToBaseModal) {
-        return common.canExecute(this.id, refToBaseModal)
+        return true
     }
 }
+
+
+module.exports.baseElement = BaseElement

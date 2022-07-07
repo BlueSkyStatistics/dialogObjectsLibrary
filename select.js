@@ -1,6 +1,7 @@
 var Sqrl = require('squirrelly');
-const common = require("./common")
-class select {
+var baseElement = require('./baseElement').baseElement;
+
+class select extends baseElement{
     content;
     id;
     required = false;
@@ -23,6 +24,7 @@ class select {
     </div>
     `
     constructor(modal, config) {
+        super(modal, config);
         this.label = config.label
         this.id = `${modal.id}_${config.no}`
         if (config.required) {
@@ -47,21 +49,21 @@ class select {
         dialog.showMessageBoxSync({ type: "error", buttons: ["OK"], title: "Select control rule violation", message: `You need to make a selection in the Select control with label: "${this.label}"` })
         return false
     }
-    getVal() {
-        var res = []
-        res = $(`#${this.id}`).val()
-        // res in null when the control is empty
-        if (res != null) {
-            if (res.length == 1) {
-                return res[0]
-            } else {
-                return res
-            }
-        }
-        else {
-            //we return an empty string so that the call this.getVal().length does not create an exception 
-            return "";
-        }
-    }
+    // getVal() {
+    //     var res = []
+    //     res = $(`#${this.id}`).val()
+    //     // res in null when the control is empty
+    //     if (res != null) {
+    //         if (res.length == 1) {
+    //             return res[0]
+    //         } else {
+    //             return res
+    //         }
+    //     }
+    //     else {
+    //         //we return an empty string so that the call this.getVal().length does not create an exception 
+    //         return "";
+    //     }
+    // }
 }
 module.exports.element = select;

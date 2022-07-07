@@ -1,8 +1,8 @@
 var Sqrl = require('squirrelly');
-const common = require("../library/common")
+var baseElement = require('./baseElement').baseElement;
 
 
-class fileOpenControl {
+class fileOpenControl extends baseElement{
     content;
     id;
     value = null;
@@ -33,6 +33,7 @@ class fileOpenControl {
     </div>`
 
     constructor(modal, config) {
+        super(modal, config)
         this.label = config.label
         if (config.required) {
             this.required = config.required;
@@ -65,10 +66,6 @@ class fileOpenControl {
             $(`#${this.id}`).val("")
         }
         
-    }
-
-    getVal() {
-        return $(`#${this.id}`).val();
     }
 }
 

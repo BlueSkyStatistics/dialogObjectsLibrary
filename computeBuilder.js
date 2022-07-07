@@ -1,6 +1,8 @@
 var Sqrl = require('squirrelly');
 const common = require("./common")
-class computeBuilder {
+var baseElement = require('./baseElement').baseElement;
+
+class computeBuilder extends baseElement{
     content;
     id;
     required = false;
@@ -830,12 +832,11 @@ class computeBuilder {
     </div>
     `
     constructor(modal, config) {
+        super(modal, config)
         this.content = Sqrl.Render(this.htmlTemplate, { modal: modal, ms: config })
         this.id = `${modal.id}_${config.no}`
     }
-    canExecute() {
-        return true
-    }
+    
     clearContent() {
         if (this.value !== null) {
             $(`#${this.id}`).val(this.value)
@@ -843,10 +844,6 @@ class computeBuilder {
             $(`#${this.id}`).val("")
         }
     }
-    getVal() {
-        return $(`#${this.id}`).val();
-    }
-    
       
 }
 

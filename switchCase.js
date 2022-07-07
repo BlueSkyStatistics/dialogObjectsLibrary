@@ -1,9 +1,9 @@
 
 var Sqrl = require('squirrelly');
-const common = require("./common")
+var baseElement = require('./baseElement').baseElement;
 
 
-class switchCase {
+class switchCase extends baseElement {
     content;
     id;
     value = null;
@@ -835,6 +835,7 @@ class switchCase {
     </div>`
 
     constructor(modal, config) {
+        super(modal, config);
         this.label = config.label
         if (config.value !== undefined) {
             this.value = config.value;
@@ -894,19 +895,19 @@ class switchCase {
         addRowToSwitchCase(this.id)
     }
 
-    getVal() {
-        var if_elements = $(`#${this.id}`).children().find('input[bs-type="switchif"')
-        var then_elements = $(`#${this.id}`).children().find('input[bs-type="switchthen"')
-        var else_elements = $(`#${this.id}`).children().find('input[bs-type="switchelse"')
-        var res = []
-        for (var i = 0 ; i < if_elements.length; i ++) {
-            res.push({'switch': if_elements[i].value, 'case': then_elements[i].value})
-        }
-        if (else_elements.length > 0) {
-            res.push({"else": else_elements[0].value})
-        }
-        return JSON.stringify(res)
-    }
+    // getVal() {
+    //     var if_elements = $(`#${this.id}`).children().find('input[bs-type="switchif"')
+    //     var then_elements = $(`#${this.id}`).children().find('input[bs-type="switchthen"')
+    //     var else_elements = $(`#${this.id}`).children().find('input[bs-type="switchelse"')
+    //     var res = []
+    //     for (var i = 0 ; i < if_elements.length; i ++) {
+    //         res.push({'switch': if_elements[i].value, 'case': then_elements[i].value})
+    //     }
+    //     if (else_elements.length > 0) {
+    //         res.push({"else": else_elements[0].value})
+    //     }
+    //     return JSON.stringify(res)
+    // }
 }
 
 module.exports.element = switchCase;

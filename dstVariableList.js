@@ -1,8 +1,8 @@
 
 var Sqrl = require('squirrelly');
-const common = require("../library/common")
+var baseElement = require('./baseElement').baseElement;
 
-class dstVariableList {
+class dstVariableList extends baseElement {
     content;
     id;
     max_values = -1;
@@ -25,6 +25,7 @@ class dstVariableList {
 </div>`
 
     constructor(modal, config) {
+        super(modal, config)
         this.label = config.label
         this.id = `${modal.id}_${config.no}`
         if (config.required) { this.required = config.required }
@@ -32,10 +33,6 @@ class dstVariableList {
         if (config.items_count) { this.items_count = config.items_count }
         this.content = Sqrl.Render(this.htmlTemplate, {modal: modal, ms: config})
         
-    }
-
-    getVal() {
-        return common.getVal(this.id)
     }
     
     canExecute(refToBaseModal) {

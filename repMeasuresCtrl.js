@@ -1,5 +1,7 @@
 var Sqrl = require('squirrelly');
-class repMeasuresCTRL {
+var baseElement = require('./baseElement').baseElement;
+
+class repMeasuresCTRL extends baseElement {
     content;
     id;
     htmlTemplate = `
@@ -109,13 +111,12 @@ class repMeasuresCTRL {
     </div>
         `
     constructor(modal, config) {
+        super(modal, config)
         this.label = config.label
         this.id = `${modal.id}_${config.no}`
         this.content = Sqrl.Render(this.htmlTemplate, { modal: modal, ms: config })
     }
-    getVal() {
-        return common.getVal(this.id)
-    }
+
     canExecute(refToBaseModal) {
         let labelTemp = ""
         let temp = ""
