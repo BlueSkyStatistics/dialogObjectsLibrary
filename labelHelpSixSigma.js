@@ -13,7 +13,7 @@ class labelHelpSixSigma {
 <li><a href="https://datascienceplus.com/six-sigma-dmaic-series-in-r-part4/">Part-4</a></li>
 <li><a href="https://datascienceplus.com/six-sigma-dmaic-series-in-r-part-5/">Part-5</a></li>
 </ul>
-<h5>QCC - quality control charting tutoria</h5>
+<h5>QCC - quality control charting tutorial</h5>
 <ul>
 <li><a href="https://cran.r-project.org/web/packages/qcc/vignettes/qcc_a_quick_tour.html">Quality control charting</a></li>
 </ul>
