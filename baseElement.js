@@ -6,11 +6,20 @@ class BaseElement {
     constructor(modal, config) {}
 
     getVal() {
-        return common.getVal(this.id)
+        try{
+            return common.getVal(this.id)
+        } catch (ex) {
+            return undefined
+        }
     }
 
     clearContent() {
-        return common.clearContent(this.id)
+        try {
+            return common.clearContent(this.id)
+        } catch (ex) {
+            return undefined
+        }
+        
     }
 
     canExecute(refToBaseModal) {
