@@ -18,10 +18,15 @@ calls_map = {
     "select": getSelectValue,
     "wrapcontrol": getWrapControl,
     "switchcase": getSwitchCase,
+    "label": getHTMLVal
 }
 
 function getVal(id){
     return calls_map[$(`#${id}`).attr("bs-type")](id);
+}
+
+function getHTMLVal(id) {
+    return $(`#${id}`).html();
 }
 
 function getFromMeasureList( id) {
