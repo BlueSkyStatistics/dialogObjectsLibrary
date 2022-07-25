@@ -1,5 +1,5 @@
 var Sqrl = require('squirrelly');
-const common = require("../library/common")
+const common = require("./common")
 
 class modal {
     htmlPieces = {

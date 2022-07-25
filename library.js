@@ -1,6 +1,4 @@
-const { TouchBarColorPicker } = require('@electron/remote')
 const common = require('./common')
-var baseModal = require('../base/baseModal').baseModal
 var modal = require('./modal').element
 var srcDataSetList = require('./srcDataSetList').element
 var srcVariableList = require('./srcVariableList').element
@@ -31,7 +29,6 @@ var labelHelpSixSigma = require('./labelHelpSixSigma').element
 
 module.exports = {
     "common": common,
-    "baseModal": baseModal,
     "modal": modal,
     "srcVariableList": srcVariableList,
     "dstVariableList": dstVariableList,

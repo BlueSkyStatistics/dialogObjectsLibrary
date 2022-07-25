@@ -1,8 +1,5 @@
 
-
 var Sqrl = require('squirrelly');
-const common = require("../library/common")
-
 
 class srcVariableList {
     content;

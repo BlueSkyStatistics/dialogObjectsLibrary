@@ -8,20 +8,21 @@
     "author": "BlueSky Statistics",
     "scripts": {},
     "dependencies": {
-      "squirrelly": "7.9.2"
+        "squirrelly": "7.9.2"
     },
-    "devDependencies": {},
+    "devDependencies": {
+        "asar": "^3.1.0"
+    },
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/BlueSkyStatistics/dialogObjectsLibrary.git"
+        "type": "git",
+        "url": "git+https://github.com/BlueSkyStatistics/dialogObjectsLibrary.git"
     },
     "license": "AGLPL",
     "bugs": {
-      "url": "https://github.com/BlueSkyStatistics/dialogObjectsLibrary/issues"
+        "url": "https://github.com/BlueSkyStatistics/dialogObjectsLibrary/issues"
     },
     "publishConfig": {
-      "registry":"https://npm.pkg.github.com"
+        "registry": "https://npm.pkg.github.com"
     },
     "homepage": "https://www.blueskystatistics.com"
-  }
-  
+}

@@ -1,7 +1,6 @@
 
 
 var Sqrl = require('squirrelly');
-const common = require("../library/common")
 var baseElement = require('./baseElement').baseElement;
 
 class labelVar extends baseElement {
