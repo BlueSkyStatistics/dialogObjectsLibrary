@@ -28,6 +28,7 @@ var repMeasuresCTRL = require('./repMeasuresCtrl').element
 var colorInput = require('./colorPicker').element
 var fileOpenControl = require('./fileOpenControl').element
 var labelHelpSixSigma = require('./labelHelpSixSigma').element
+
 module.exports = {
     "common": common,
     "baseModal": baseModal,

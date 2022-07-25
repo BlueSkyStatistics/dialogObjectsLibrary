@@ -1,9 +1,9 @@
 {
-    "name": "blueskyElementLibrary",
+    "name": "bskyelementlib",
     "productName": "BlueSky Statistics Elements Librarty",
     "description": "Elements Librarty",
     "keywords": [],
-    "main": "",
+    "main": "library.js",
     "version": "1.0.0",
     "author": "BlueSky Statistics",
     "scripts": {},
@@ -17,7 +17,7 @@
     },
     "license": "AGLPL",
     "bugs": {
-      "url": "https://github.com/BlueSkyStatistics/BlueSkyJS/issues"
+      "url": "https://github.com/BlueSkyStatistics/dialogObjectsLibrary/issues"
     },
     "homepage": "https://www.blueskystatistics.com"
   }
