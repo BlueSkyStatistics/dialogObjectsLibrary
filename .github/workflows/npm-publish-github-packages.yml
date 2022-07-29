@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: 16
       - run: npm i asar
-      - run: asar pack . elementslib.asar
+      - run: ./node_modules/.bin/asar pack . elementslib.asar
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
