@@ -13,6 +13,9 @@ class srcVariableList {
      modal_id="{{modal.id}}"
      {{if (options.ms.action)}}act="{{ms.action}}"{{#else}}act="copy"{{/if}}  
      bs-type="cols" ondrop="drop(event)" ondragover="allowDrop(event)">
+     <div class="curtain" id="{{modal.id}}VarsCurtain" bs-type="curtain">
+        <div class="fa fa-spinner fa-spin"></div>
+    </div>
 </div>`
 
     constructor(modal, config={}) {
@@ -53,6 +56,7 @@ class srcVariableList {
                 }
             )
         }
+        $(`#${this.id}Curtain`).hide()
     }
     
     canExecute() {
@@ -60,9 +64,13 @@ class srcVariableList {
     }
 
     clearContent() {
+        var outerthis = this
         $(`#${this.id}`).children().each(function(index, element) {
-            element.remove()
+            if (element.id != `${outerthis.id}Curtain`) {
+                element.remove()
+            }
         })
+        $(`#${this.id}Curtain`).show()
     }
 }
 
