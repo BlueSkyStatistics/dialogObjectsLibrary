@@ -50,6 +50,8 @@ class OutputOpt {
                       <option value="default-theme">Default</option>
                       <option value="gray-theme">Gray</option>
                       <option value="indigo-theme">Indigo</option>
+                      <option value="darkcherry-theme">Dark Cherry</option>
+                      <option value="dracula-theme">Dracula</option>
                     </select>
                   </div>
     `
