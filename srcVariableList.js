@@ -7,7 +7,8 @@ class srcVariableList {
     modalID;
     action;
     order = []
-    htmlTemplate = `<h6>{{if (options.ms.label)}}{{ms.label}}{{#else}}Source variables{{/if}}</h6>
+    htmlTemplate = `{{if (options.ms.scroll)}}<div class="sticky-left">{{/if}}
+<h6>{{if (options.ms.label)}}{{ms.label}}{{#else}}Source variables{{/if}}</h6>
 <div class="form-check list-group var-list" multiple 
      id="{{modal.id}}Vars"
      modal_id="{{modal.id}}"
@@ -16,7 +17,8 @@ class srcVariableList {
      <div class="curtain" id="{{modal.id}}VarsCurtain" bs-type="curtain">
         <div class="fa fa-spinner fa-spin"></div>
     </div>
-</div>`
+</div>
+{{if (options.ms.scroll)}}</div>{{/if}}`
 
     constructor(modal, config={}) {
         this.modalID = modal.id;
