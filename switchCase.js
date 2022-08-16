@@ -895,19 +895,21 @@ class switchCase extends baseElement {
         addRowToSwitchCase(this.id)
     }
 
-    // getVal() {
-    //     var if_elements = $(`#${this.id}`).children().find('input[bs-type="switchif"')
-    //     var then_elements = $(`#${this.id}`).children().find('input[bs-type="switchthen"')
-    //     var else_elements = $(`#${this.id}`).children().find('input[bs-type="switchelse"')
-    //     var res = []
-    //     for (var i = 0 ; i < if_elements.length; i ++) {
-    //         res.push({'switch': if_elements[i].value, 'case': then_elements[i].value})
-    //     }
-    //     if (else_elements.length > 0) {
-    //         res.push({"else": else_elements[0].value})
-    //     }
-    //     return JSON.stringify(res)
-    // }
+    getVal() {
+        // TODO: this on how to get this crap out of here
+        // This is required to present results when opening a modal from a previous run
+         var if_elements = $(`#${this.id}`).children().find('input[bs-type="switchif"')
+         var then_elements = $(`#${this.id}`).children().find('input[bs-type="switchthen"')
+         var else_elements = $(`#${this.id}`).children().find('input[bs-type="switchelse"')
+         var res = []
+         for (var i = 0 ; i < if_elements.length; i ++) {
+             res.push({'switch': if_elements[i].value, 'case': then_elements[i].value})
+         }
+         if (else_elements.length > 0) {
+             res.push({"else": else_elements[0].value})
+         }
+         return JSON.stringify(res)
+    }
 }
 
 module.exports.element = switchCase;
