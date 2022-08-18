@@ -39,9 +39,9 @@ function getFromMeasureList( id) {
 }
 
 function getSwitchCase(id) {
-    var if_elements = $(`#${id}`).children().find('input[bs-type="switchif"')
-    var then_elements = $(`#${id}`).children().find('input[bs-type="switchthen"')
-    var else_elements = $(`#${id}`).children().find('input[bs-type="switchelse"')
+    var if_elements = $(`#${id}`).children().find('textarea[bs-type="switchif"]')
+    var then_elements = $(`#${id}`).children().find('textarea[bs-type="switchthen"]')
+    var else_elements = $(`#${id}`).children().find('textarea[bs-type="switchelse"]')
     var res = []
     let temp = ""
     let closingBracket = ")"

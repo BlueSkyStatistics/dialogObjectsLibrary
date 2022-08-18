@@ -820,17 +820,37 @@ class switchCase extends baseElement {
         </div>
     </div>
     <div id="{{modal.id}}_{{ms.no}}" {{if(options.ms.ml)}}class="ml-{{ms.ml}}"{{/if}}
-         extractable=true bs-type="switchcase" no="{{ms.no}}" extractionRule="{{ms.extraction}}">
-        <div class="d-flex" el_index=0>
-            <div class="mt-1 mr-1">if</div>
-            <div class="mr-1 flex-fill">
-                <input class="w-100" type="text" bs-type="switchif" default="" ondrop="dropToSwitchCase(event)" onclick="focusInput(event)">
+         extractable=true bs-type="switchcase" no="{{ms.no}}" extractionRule="{{ms.extraction}}"
+         style="height: 300px; overflow: scroll">
+        
+        <div class="row bg-gray m-1 mr-3 p-2" el_index=0>
+            <div class="col-11">
+                <div class="row">
+                    <div class="col-2">
+                        IF
+                    </div>
+                    <div class="col-10">
+                        <textarea rows="1" class="w-100" 
+                                    type="text" bs-type="switchif" 
+                                    default="" ondrop="dropToSwitchCase(event)" 
+                                    onclick="focusInput(event)"></textarea>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-2">
+                        THEN
+                    </div>
+                    <div class="col-10">
+                        <textarea rows="1" class="w-100" 
+                                type="text" bs-type="switchthen" 
+                                default="" ondrop="dropToSwitchCase(event)" 
+                                onclick="focusInput(event)"></textarea>
+                    </div>
+                </div>
             </div>
-            <div class="mt-1 mr-1"><i class="fas fa-arrow-right"></i></div>
-            <div class="flex-fill">
-                <input class="w-100" type="text" bs-type="switchthen" default="" ondrop="dropToSwitchCase(event)" onclick="focusInput(event)">
+            <div class="col-1 p-1 pt-4">
+                <button class='btn btn-secondary btn-top-menu p-1' onclick='removeSwitchCase("{{modal.id}}_{{ms.no}}", 0)' parentdiv=><i class="fas fa-trash"></i></button></div>
             </div>
-            <div><button class='btn btn-secondary btn-top-menu mt-1' onclick='removeSwitchCase("{{modal.id}}_{{ms.no}}", 0)' parentdiv=><i class="fas fa-trash"></i></button></div>
         </div>
     </div>`
 
@@ -898,9 +918,9 @@ class switchCase extends baseElement {
     getVal() {
         // TODO: this on how to get this crap out of here
         // This is required to present results when opening a modal from a previous run
-         var if_elements = $(`#${this.id}`).children().find('input[bs-type="switchif"')
-         var then_elements = $(`#${this.id}`).children().find('input[bs-type="switchthen"')
-         var else_elements = $(`#${this.id}`).children().find('input[bs-type="switchelse"')
+         var if_elements = $(`#${this.id}`).children().find('textarea[bs-type="switchif"]')
+         var then_elements = $(`#${this.id}`).children().find('textarea[bs-type="switchthen"]')
+         var else_elements = $(`#${this.id}`).children().find('textarea[bs-type="switchelse"]')
          var res = []
          for (var i = 0 ; i < if_elements.length; i ++) {
              res.push({'switch': if_elements[i].value, 'case': then_elements[i].value})
