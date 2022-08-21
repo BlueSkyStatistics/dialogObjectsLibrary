@@ -821,7 +821,7 @@ class switchCase extends baseElement {
     </div>
     <div id="{{modal.id}}_{{ms.no}}" {{if(options.ms.ml)}}class="ml-{{ms.ml}}"{{/if}}
          extractable=true bs-type="switchcase" no="{{ms.no}}" extractionRule="{{ms.extraction}}"
-         style="height: 300px; overflow: scroll">
+         style="height: 300px; overflow: auto">
         
         <div class="row bg-gray m-1 mr-3 p-2" el_index=0>
             <div class="col-11">
