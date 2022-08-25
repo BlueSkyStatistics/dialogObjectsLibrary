@@ -25,6 +25,7 @@ var switchCase = require('./switchCase').element
 var repMeasuresCTRL = require('./repMeasuresCtrl').element
 var colorInput = require('./colorPicker').element
 var fileOpenControl = require('./fileOpenControl').element
+var fileSaveControl = require('./fileSaveControl').element
 var labelHelpSixSigma = require('./labelHelpSixSigma').element
 
 module.exports = {
@@ -55,5 +56,6 @@ module.exports = {
     "repMeasuresCTRL":repMeasuresCTRL,
     "colorInput":colorInput,
     "fileOpenControl": fileOpenControl,
+    "fileSaveControl": fileSaveControl,
     "labelHelpSixSigma": labelHelpSixSigma,
 }
