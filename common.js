@@ -39,26 +39,22 @@ function getFromMeasureList( id) {
 }
 
 function getSwitchCase(id) {
-    var if_elements = $(`#${id}`).children().find('textarea[bs-type="switchif"]')
-    var then_elements = $(`#${id}`).children().find('textarea[bs-type="switchthen"]')
-    var else_elements = $(`#${id}`).children().find('textarea[bs-type="switchelse"]')
+    var if_elements = $(`#${this.id}`).children().find('div[bs-type="switchif"] .CodeMirror')
+    var then_elements = $(`#${this.id}`).children().find('div[bs-type="switchthen"] .CodeMirror')
+    var else_elements = $(`#${this.id}`).children().find('div[bs-type="switchelse"] .CodeMirror')
     var res = []
     let temp = ""
     let closingBracket = ")"
-        for (var i = 0 ; i < if_elements.length; i ++) 
-        {
-             temp = temp + "\n\tifelse(" + if_elements[i].value + "," + then_elements[i].value + ","
-        }
-        if (else_elements[0] !=undefined)
-        {
-            temp += else_elements[0].value
-        }
-        else
-        {
-            temp += "NA"
-        }
-        temp = temp + closingBracket.repeat(i)
-     return temp
+    for (var i = 0 ; i < if_elements.length; i ++) {
+            temp = temp + "\n\tifelse(" + if_elements[i].CodeMirror.getValue() + "," + then_elements[i].CodeMirror.getValue() + ","
+    }
+    if (else_elements[0] !=undefined) {
+            temp += else_elements[0].CodeMirror.getValue()
+    } else {
+        temp += "NA"
+    }
+    temp = temp + closingBracket.repeat(i)
+    return temp
 }
 
 function getWrapControl(id){

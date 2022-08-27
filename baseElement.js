@@ -2,7 +2,6 @@ const common = require("./common")
 
 class BaseElement {
     id;
-    
     constructor(modal, config) {}
 
     getVal() {
