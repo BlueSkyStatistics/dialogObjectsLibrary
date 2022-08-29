@@ -27,7 +27,7 @@ class fileOpenControl extends baseElement{
                    disabled />
         </div>
         <div class="col-4">
-            <button type="button" class="btn formula-btn p-1 w-100" onclick="openFileControlDialog('{{modal.id}}_{{ms.no}}', '{{if(options.ms.type)}}{{ms.type}}{{#else}}file{{/if}}')" >Choose {{if(options.ms.type)}}{{ms.type}}{{#else}}file{{/if}}</button>  
+            <button type="button" id="{{modal.id}}_{{ms.no}}_btn" class="btn formula-btn p-1 w-100" onclick="openFileControlDialog('{{modal.id}}_{{ms.no}}', '{{if(options.ms.type)}}{{ms.type}}{{#else}}file{{/if}}')" >Choose {{if(options.ms.type)}}{{ms.type}}{{#else}}file{{/if}}</button>  
         </div>        
     </div>
     </div>`
