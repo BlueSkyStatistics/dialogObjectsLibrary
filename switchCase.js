@@ -829,7 +829,7 @@ class switchCase extends baseElement {
                     <div class="col-2">
                         IF
                     </div>
-                    <div class="col-10 cm" bs-type="switchif"></div>
+                    <div class="col-10 cm focus" bs-type="switchif"></div>
                 </div>
                 <div class="row">
                     <div class="col-2">
