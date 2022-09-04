@@ -11,7 +11,7 @@ class computeBuilder extends baseElement{
         <div class="row">
             <div class="col col-xx"></div>
             <div class="col col-rr">
-                <h6>{{ms.label}}</h6>
+                <h6>{{ms.label}}{{if(options.ms.required)}}<span class="required">*</span>{{/if}}</h6>
             </div>
         </div>
         <div class="row">
@@ -833,8 +833,25 @@ class computeBuilder extends baseElement{
     `
     constructor(modal, config) {
         super(modal, config)
+        this.label = config.label
+        if (config.required) {
+            this.required = config.required;
+        }
         this.content = Sqrl.Render(this.htmlTemplate, { modal: modal, ms: config })
         this.id = `${modal.id}_${config.no}`
+    }
+
+
+    canExecute(refToBaseModal) {
+        var outer_this = this;
+        if (this.required &&  (this.getVal() =="" || this.getVal() == undefined)){
+            dialog.showMessageBoxSync({type: "error", buttons: ["OK"], title: "Input rule violation", message: `The control with label: "${outer_this.label}" needs to be populated to proceed`})     
+                return false
+        }
+        else
+        {
+            return true
+        }
     }
     
     clearContent() {

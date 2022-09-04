@@ -161,6 +161,7 @@ class formulaControl extends baseElement {
         if (config.required) {
             this.required = config.required;
         }
+       
         this.content = Sqrl.Render(this.htmlTemplate, {modal: modal, ms: config})
         this.id = `${modal.id}_${config.no}`
     }
