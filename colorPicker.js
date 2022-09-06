@@ -27,6 +27,7 @@ class colorPicker extends baseElement {
                    {{if(options.ms.value !== undefined)}} default="{{ms.value}}" value="{{ms.value}}" {{#else}} default="" {{/if}}
                    {{if(options.ms.filter)}} filter="{{ms.filter}}" {{/if}} ondrop="dropToInput(event)">
         </div>
+    </div>
     </div>`
 
     constructor(modal, config) {

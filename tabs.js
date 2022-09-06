@@ -5,6 +5,7 @@ class tabsComponents {
     content;
     id;
     htmlTemplate = `
+    <div>
         <ul class="nav nav-pils nav-black" style="width:100%" id="{{modal.id}}_{{ms.no}}" no="{{ms.no}}" extractable=true extractionRule="{{ms.extraction}}" bs-type="tab" role="tablist">
         {{each(options.ms.tabs)}}
             <li class="nav-item">
@@ -21,14 +22,16 @@ class tabsComponents {
         {{/each}}
         </ul>
         <div class="tab-content tab-content-black {{if (options.ms.invisible === true)}} invisible {{/if}}"  id="{{modal.id}}_{{ms.no}}_content">
-        {{each(options.ms.tabs)}}
+            {{each(options.ms.tabs)}}
             <div class="tab-pane fade show {{@this.state}} p-2" 
                 id="{{modal.id}}_{{ms.no}}_{{@this.no}}" 
                 role="tabpanel" 
                 aria-labelledby="{{modal.id}}_{{ms.no}}_{{@this.no}}_tab">
                 {{ @this.content | safe }}
             </div>
-        {{/each}}</div>`;
+            {{/each}}
+        </div>
+    </div>`;
 
     constructor(modal, config) {
         this.tabs = config.tabs;

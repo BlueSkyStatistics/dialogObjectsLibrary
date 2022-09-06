@@ -9,13 +9,15 @@ class comboBox extends baseElement{
     required = false;
     defaults;
     label = null
-    htmlTemplate = `<label for="{{modal.id}}_{{ms.no}}" class="mt-2 mr-2 small-label {{if(options.ms.style)}}{{ms.style}}{{/if}}">{{ms.label}} {{if(options.ms.required)}}<span class="required">*</span>{{/if}}</label>
-    <div class="list-group ms-list {{if(options.ms.style)}}{{ms.style}}{{/if}}">
-        <select class="list-group borderless" bs-type="combobox" {{ if (options.ms.multiple) }} multiple {{/if}} id="{{modal.id}}_{{ms.no}}" no="{{ms.no}}" extractable=true default="{{ms.default}}" extractionRule="{{ms.extraction}}">
-            {{ each(options.ms.options) }}
-               <option {{ if (options.ms.hasOwnProperty("default") && options.ms.default.split("|").includes(@this))}}selected="selected"{{/if}}>{{@this}}</option> 
-            {{/each}}
-        </select>
+    htmlTemplate = `<div>
+        <label for="{{modal.id}}_{{ms.no}}" class="mt-2 mr-2 small-label {{if(options.ms.style)}}{{ms.style}}{{/if}}">{{ms.label}} {{if(options.ms.required)}}<span class="required">*</span>{{/if}}</label>
+        <div class="list-group ms-list {{if(options.ms.style)}}{{ms.style}}{{/if}}">
+            <select class="list-group borderless" bs-type="combobox" {{ if (options.ms.multiple) }} multiple {{/if}} id="{{modal.id}}_{{ms.no}}" no="{{ms.no}}" extractable=true default="{{ms.default}}" extractionRule="{{ms.extraction}}">
+                {{ each(options.ms.options) }}
+                <option {{ if (options.ms.hasOwnProperty("default") && options.ms.default.split("|").includes(@this))}}selected="selected"{{/if}}>{{@this}}</option> 
+                {{/each}}
+            </select>
+        </div>
     </div>
     `
 
