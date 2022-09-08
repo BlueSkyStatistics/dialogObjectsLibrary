@@ -1,4 +1,5 @@
 const common = require('./common')
+var handlers = require('./handlers')
 var modal = require('./modal').element
 var srcDataSetList = require('./srcDataSetList').element
 var srcVariableList = require('./srcVariableList').element
@@ -29,6 +30,36 @@ var fileSaveControl = require('./fileSaveControl').element
 var labelHelpSixSigma = require('./labelHelpSixSigma').element
 
 module.exports = {
+    "drag": handlers.drag,
+    "drop": handlers.drop,
+    "allowDrop": handlers.allowDrop,
+    "attachActionToMoveArrow": handlers.attachActionToMoveArrow,
+    "moveToSrc": handlers.moveToSrc,
+    "modeToDst": handlers.moveToDst,
+    "arrangeFocus": handlers.arrangeFocus,
+    "toFormula": handlers.toFormula,
+    "toFocusedInport": handlers.toFocusedInput,
+    "dropWrapped": handlers.dropWrapped,
+    "dropToInputAditive": handlers.dropToInputAditive,
+    "dropToInput": handlers.dropToInput,
+    "createCMFromTestArea": handlers.createCMFromTestArea,
+    "addRowToSwitchCase": handlers.addRowToSwitchCase,
+    "addElseToSwitchCase": handlers.addElseToSwitchCase,
+    "toggleFormulaButtonOff": handlers.toggleFormulaButtonOff,
+    "toggleButton": handlers.toggleButton,
+    "toggleSelect": handlers.toggleSelect,
+    "selectElement": handlers.selectElement,
+    "enablyStickyDivs": handlers.enablyStickyDivs,
+    "disableStickyDivs": handlers.disableStickyDivs,
+    "r_before_modal": handlers.r_before_modal,
+    "r_on_select": handlers.r_on_select,
+    "updateModalHandler": handlers.updateModalHandler,
+    "renderChild": handlers.renderChild,
+    "renderDependants": handlers.renderDependants,
+    "changeRadio": handlers.changeRadio,
+    "changeCheckBox": handlers.changeCheckBox,
+    "resetComputeBuilderButtons": handlers.resetComputeBuilderButtons,
+    "removeSwitchCase": handlers.removeSwitchCase,
     "common": common,
     "modal": modal,
     "srcVariableList": srcVariableList,
