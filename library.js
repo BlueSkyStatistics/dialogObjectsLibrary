@@ -60,6 +60,7 @@ module.exports = {
     "changeCheckBox": handlers.changeCheckBox,
     "resetComputeBuilderButtons": handlers.resetComputeBuilderButtons,
     "removeSwitchCase": handlers.removeSwitchCase,
+    "dropToTextArea": handlers.dropToTextArea,
     "common": common,
     "modal": modal,
     "srcVariableList": srcVariableList,
