@@ -2,7 +2,7 @@ var Sqrl = require('squirrelly');
 var baseElement = require('./baseElement').baseElement;
 
 
-class inputVariable extends baseElement{
+class inputVariable extends baseElement {
     content;
     id;
     value = null;
