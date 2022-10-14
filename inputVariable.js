@@ -59,7 +59,7 @@ class inputVariable extends baseElement {
         switch (this.overwrite){
             case "variable":
                if (getActiveVariables().indexOf(outer_this.getVal()) > -1){
-                var ret = dialog.showMessageBoxSync({type: "question", buttons: ["Ok", "Cancel"], title: "Overwrite Alert", message: `You are going to overwrite variable: ${outer_this.getVal()}`})
+                var ret = dialog.showMessageBoxSync({type: "question", buttons: ["Ok", "Cancel"], title: "Overwrite Alert", message: `The value specified in the field with label: "${outer_this.label}" will overwrite the existing variable: ${outer_this.getVal()}`})
                 if (ret === 0){
                     break
                 } else {
@@ -68,7 +68,7 @@ class inputVariable extends baseElement {
                }
             case "dataset":
                if ( getAllDatasets().indexOf(outer_this.getVal()) > -1 ){
-                var ret = dialog.showMessageBoxSync({type: "question", buttons: ["Ok", "Cancel"], title: "Overwrite Alert", message: `You are going to overwrite dataset: ${outer_this.getVal()}`})
+                var ret = dialog.showMessageBoxSync({type: "question", buttons: ["Ok", "Cancel"], title: "Overwrite Alert", message: `The value specified in the field with label: "${outer_this.label}" will overwrite the dataset: ${outer_this.getVal()}`})
                 if (ret === 0){
                     break
                 } else {
