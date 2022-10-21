@@ -21,7 +21,7 @@ class modal {
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header pr-1 pl-3">
+            <div class="modal-header modal-header--sticky pr-1 pl-3">
                 <div class="row w-100">
                     <div class="col-7">
                         <h5 class="modal-title" id="{{modal.id}}Label">{{modal.label}}</h5>
