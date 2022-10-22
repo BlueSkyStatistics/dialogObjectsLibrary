@@ -903,7 +903,7 @@ module.exports.enablyStickyDivs = (modal_id) => {
         }
         if (ev.target.scrollTop < 70) {
           var offsetT = $(el).attr("data-offset")
-          $(el).css("top", `${offsetT - ev.target.scrollTop}px`)
+          // $(el).css("top", `${offsetT - ev.target.scrollTop}px`)
           $(el).css("position", "")
           $(el).css("width", "")
         }
