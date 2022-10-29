@@ -28,6 +28,9 @@ var colorInput = require('./colorPicker').element
 var fileOpenControl = require('./fileOpenControl').element
 var fileSaveControl = require('./fileSaveControl').element
 var labelHelpSixSigma = require('./labelHelpSixSigma').element
+var selectDataset = require('./selectDataset').element
+var mergeJoin = require('./mergeJoin').element
+
 
 module.exports = {
     "drag": handlers.drag,
@@ -53,6 +56,8 @@ module.exports = {
     "disableStickyDivs": handlers.disableStickyDivs,
     "r_before_modal": handlers.r_before_modal,
     "r_on_select": handlers.r_on_select,
+    "populateVariablesOfDataset":handlers.populateVariablesOfDataset,
+    "addToJoin":handlers.addToJoin,
     "updateModalHandler": handlers.updateModalHandler,
     "renderChild": handlers.renderChild,
     "renderDependants": handlers.renderDependants,
@@ -90,4 +95,11 @@ module.exports = {
     "fileOpenControl": fileOpenControl,
     "fileSaveControl": fileSaveControl,
     "labelHelpSixSigma": labelHelpSixSigma,
+    "selectDataset": selectDataset,
+    "mergeJoin":mergeJoin,
+    "selectElementMergeDatasets": handlers.selectElementMergeDatasets,
+    "addToJoin" : handlers.addToJoin,
+    "removeFromJoin" : handlers.removeFromJoin,
+    "selectForDeletionMergeDatasets": handlers.selectForDeletionMergeDatasets
+    
 }
