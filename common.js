@@ -18,7 +18,8 @@ calls_map = {
     "select": getSelectValue,
     "wrapcontrol": getWrapControl,
     "switchcase": getSwitchCase,
-    "label": getHTMLVal
+    "label": getHTMLVal,
+    "joinMapping": getJoinMapping
 }
 
 function getVal(id){
@@ -230,6 +231,15 @@ function getFromFactorList(id) {
         str = value.innerHTML
         str =str.substring(0, str.indexOf("("));
         res.push(str);
+    })
+    return res;
+}
+
+function getJoinMapping( id) {
+    let res =[];
+    let ul = document.getElementById(id).getElementsByTagName('li');    
+    ul.forEach(function (value) {
+        res.push(value.innerHTML);
     })
     return res;
 }

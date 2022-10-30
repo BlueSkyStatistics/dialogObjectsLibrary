@@ -70,6 +70,25 @@ function _to_compute(ev, dst) {
     }
     el.blur();
 }
+
+
+
+module.exports.selectElementMergeDatasets	 = (ev) => {
+  ev.preventDefault();
+  ev.stopPropagation();
+  var el = document.getElementById(ev.target.id)
+  var parentId = el.parentElement.id;
+  $(`#${parentId} .list-group-item-action.active`).removeAttr("active");
+  $(`#${parentId} .list-group-item-action.active`).removeClass("active");
+  if (el.classList.contains("active")) {
+    el.removeAttribute("active");
+    el.classList.remove("active");
+  } else {
+    el.setAttribute("active", "");
+    el.classList.add("active");
+  }
+}
+
   
 function arrangeFocus(inserted_object_id, parentID) {
     var el = document.getElementById(inserted_object_id)
@@ -689,7 +708,7 @@ module.exports.selectElement = (ev) => {
     var modal_id = document.getElementById(parentId).getAttribute("modal_id");
     $(`#${modal_id} .list-group-item-action.active`).not(`#${parentId} .list-group-item-action.active`).removeAttr("active");
     $(`#${modal_id} .list-group-item-action.active`).not(`#${parentId} .list-group-item-action.active`).parent().removeAttr("clicked")
-    $(`#${modal_id} .list-group-item-action.active`).not(`#${parentId} .list-group-item-action.active`).parent().removeAttr("chiftclicked")
+    $(`#${modal_id} .list-group-item-action.active`).not(`#${parentId} .list-group-item-action.active`).parent().removeAttr("shiftclicked")
     $(`#${modal_id} .list-group-item-action.active`).not(`#${parentId} .list-group-item-action.active`).removeClass("active");
     if (ev.shiftKey) {
       if ($(`#${parentId}`).attr("shiftclicked") === undefined) {
@@ -1030,6 +1049,116 @@ module.exports.updateModalHandler = (element_id, content) => {
     }
 }
 
+function populateVariablesOfDataset(ctrlToPopulate, value)
+{
+   $(`#${ctrlToPopulate}`).children().each(function(index, element) {
+    element.remove()
+  }) 
+            var dataset = value;
+            var item_id = ctrlToPopulate
+            var data = store.get(dataset);
+            if (data !== undefined) {
+                var order = []
+                data.cols.forEach(element => {
+                    var item_name = element.Name[0];
+                    order.push(`${item_id}_${value}_${item_name.replace(/ /g, "_")}`)
+                    $(`#${item_id}`).append(`<a href="#" 
+                            id="${item_id}_${value}_${item_name.replace(/ /g, "_")}"
+                            class="list-group-item list-group-item-sm list-group-item-action measure-${element.Measure[0]} class-${element.ColClass[0]}" 
+                            draggable="true" 
+                            bs-row-type="${element.Type[0]}" 
+                            bs-row-class="${element.ColClass[0]}" 
+                            bs-row-measure="${element.Measure[0]}" 
+                            ondrop="drop(event)"
+                            onclick="selectElementMergeDatasets(event)">${item_name}</a>`)
+                });
+                $(`#${item_id}`).attr('order', order.join("|||"))
+            } else {
+                throw (`${dataset} is empty`)
+            }
+       
+}   
+
+
+
+function addToJoin( modal_id, listOfVariablesToJoinBy)
+{
+  var joinString = []
+  if ($(`#${modal_id} .list-group-item-action.active`).length != 2)
+  {
+    dialog.showMessageBoxSync({ type: "error", buttons: ["OK"], title: "Join variables incorrectly specified", message: "You need to select a single variable from both the active dataset and the target dataset to join by " })
+    return false;
+  }
+  else
+  {
+    //Making all existing selections in the listOfVariablesToJoinBy control inactive
+    $(`#${listOfVariablesToJoinBy} .list-group-item.active`).each(
+      function(_, el)
+        {
+           el.removeAttribute("active");
+           el.classList.remove("active");
+        }
+    )   
+    $(`#${modal_id} .list-group-item-action.active`).each(
+    function(_, element)
+      {
+        joinString.push(element.innerText)
+      }
+    )   
+    let ul = document.getElementById(listOfVariablesToJoinBy).getElementsByTagName('ul');
+    let li = document.createElement("li");
+    let idstring = joinString.join("_")
+    li.setAttribute('id', idstring);
+    li.classList.add('list-group-item');
+    li.classList.add('list-group-item-sm');
+    li.classList.add('active');
+    let attClick = document.createAttribute("onclick");       // Create a "class" attribute
+    attClick.value = "selectForDeletionMergeDatasets(event)";                 // Set the value of the class attribute
+    li.setAttributeNode(attClick);  
+    joinString = joinString.join("=")
+    li.appendChild(document.createTextNode(joinString));
+    ul[0].appendChild(li);
+  }
+}
+
+
+
+
+module.exports.selectForDeletionMergeDatasets	 = (ev) => {
+  ev.preventDefault();
+  ev.stopPropagation();
+  var el = document.getElementById(ev.target.id)
+  var parentId = el.parentElement.id;
+  if (el.classList.contains("active")) {
+    el.removeAttribute("active");
+    el.classList.remove("active");
+  } else {
+    el.setAttribute("active", "");
+    el.classList.add("active");
+  }
+}
+
+function removeFromJoin(listOfVariablesToJoinBy) {
+  let liList = document.getElementById(listOfVariablesToJoinBy).getElementsByTagName('ul')[0].getElementsByClassName('active');
+  let ul = document.getElementById(listOfVariablesToJoinBy).getElementsByTagName('ul')[0];
+  if (liList.length ==0)
+  {
+     ipcRenderer.invoke('errormessage', { title: "Error", message: `You must select an entry to delete before clicking the delete button` });
+  }
+  else
+  {
+  let count = liList.length
+  for (i=0; i< count; i++)
+  {
+    ul.removeChild(liList[0])
+  }
+
+  }
+
+}
+
+
+
 module.exports.moveToSrc = moveToSrc
 module.exports.moveToDst = moveToDst
 module.exports.attachActionToMoveArrow = attachActionToMoveArrow
@@ -1040,3 +1169,9 @@ module.exports.toggleButton = toggleButton
 module.exports.toggleSelect = toggleSelect
 module.exports.renderDependants = renderDependants
 module.exports.r_on_select = r_on_select
+module.exports.populateVariablesOfDataset=populateVariablesOfDataset
+module.exports.addToJoin = addToJoin
+module.exports.removeFromJoin = removeFromJoin
+
+
+
