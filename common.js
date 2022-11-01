@@ -15,11 +15,11 @@ calls_map = {
     "character": getTextVal,
     "slider": getTextVal,
     "combobox": getComboValue,
-    "select": getSelectValue,
+    "bskyselect": getSelectValue,
     "wrapcontrol": getWrapControl,
     "switchcase": getSwitchCase,
     "label": getHTMLVal,
-    "joinMapping": getJoinMapping
+    "joinMapping": getJoinMapping,
 }
 
 function getVal(id){
@@ -237,13 +237,12 @@ function getFromFactorList(id) {
 
 function getJoinMapping( id) {
     let res =[];
-    let ul = document.getElementById(id).getElementsByTagName('li');    
+    let ul = document.getElementById(id).getElementsByTagName('li');   
     ul.forEach(function (value) {
-        res.push(value.innerHTML);
+        res.push(value.getAttribute('pasteString'));
     })
     return res;
 }
-
 
 module.exports = { 
     getVal: getVal,
