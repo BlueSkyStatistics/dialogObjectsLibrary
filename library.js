@@ -66,6 +66,8 @@ module.exports = {
     "resetComputeBuilderButtons": handlers.resetComputeBuilderButtons,
     "removeSwitchCase": handlers.removeSwitchCase,
     "dropToTextArea": handlers.dropToTextArea,
+    "openFileControlDialog": handlers.openFileControlDialog,
+    "saveFileControlDialog": handlers.saveFileControlDialog,
     "common": common,
     "modal": modal,
     "srcVariableList": srcVariableList,

@@ -21,7 +21,7 @@ class modal {
     aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
-            <div class="modal-header pr-1 pl-3">
+            <div class="modal-header modal-header--sticky pr-1 pl-3">
                 <div class="row w-100">
                     <div class="col-7">
                         <h5 class="modal-title" id="{{modal.id}}Label">{{modal.label}}</h5>
@@ -46,6 +46,10 @@ class modal {
                         <button type="button" data-dismiss="modal" action="save" class="close d-none btn-tooltip mr-0 enable-tooltip" id="{{modal.id}}Save"
                         data-toggle="tooltip" title="Save Settings">
                             <i class="fas fa-save"></i>
+                        </button>
+                        <button type="button" action="attach" class="close mr-1 enable-tooltip" id="{{modal.id}}Attach"
+                        data-toggle="tooltip" title="Attach" style="display: none;">
+                            <i class="fas fa-window-restore"></i>
                         </button>                        
                     </div>
                 </div>
@@ -127,6 +131,13 @@ class modal {
         return code_vars
     }
 
+    static attachSidebar() {
+        // Move modal to undraggable state
+        // $(`.modal.show .modal-dialog`).draggable("disable");
+        $(`.modal.show [action='attach']`).hide()
+        $(`.modal.show .modal-dialog`).css({top: '', left: ''})
+    }
+
     compile(onShow, onHide, onSubmit, onSyntax, help, onSave) {
         return {
             modal: this.content,
@@ -137,6 +148,7 @@ class modal {
             onsyntax: onSyntax,
             onhelp: help,
             onsave: onSave,
+            onattach: modal.attachSidebar,
             nav: this.nav
         }
     }
