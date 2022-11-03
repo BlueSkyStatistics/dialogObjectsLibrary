@@ -978,7 +978,7 @@ module.exports.updateModalHandler = (element_id, content) => {
       renderCombo(element_id, content)
       $(`#${element_id}`).trigger('change');
       break;
-    case 'bskyselect':
+    case 'select':
         renderSelect(element_id, content)
         $(`#${element_id}`).trigger('change');
         break;

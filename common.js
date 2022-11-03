@@ -15,7 +15,7 @@ calls_map = {
     "character": getTextVal,
     "slider": getTextVal,
     "combobox": getComboValue,
-    "bskyselect": getSelectValue,
+    "select": getSelectValue,
     "wrapcontrol": getWrapControl,
     "switchcase": getSwitchCase,
     "label": getHTMLVal,
