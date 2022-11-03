@@ -78,8 +78,6 @@ class selectDataset extends baseElement {
         document.getElementById(this.id.concat("label")).innerHTML
             = "Select a dataset to join " + activedataset + " with";
         //Find and save the selected dataset from history or a prior run of the dialog
-        //$(`#${this.id}`).attr("selectedValues" )
-
         if ($(`#${this.id}`).attr("selectedValues" ) != undefined)
         {
             prevSelected  =$(`#${this.id}`).attr("selectedValues" )
