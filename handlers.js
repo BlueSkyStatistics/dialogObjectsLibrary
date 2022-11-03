@@ -950,6 +950,27 @@ module.exports.r_before_modal = (modal_id) => {
   r_on_select(modal_id, r_commands)
   $(`#${modal_id}`).modal('show');
 }
+
+function renderSelect(element_id, content) {
+  clearSelect(element_id)
+  var _def = $(`#${element_id}`).attr('default')
+  var _opt_template = `{{ each(options.options) }}
+      <option {{ if (options.default && options.default.split("|").includes(@this))}}selected="selected"{{/if}}>{{@this}}</option>
+    {{/each}}`
+  var _opt = Sqrl.Render(_opt_template, { options: content, default: _def })
+  $(`#${element_id}`).append(_opt);
+}
+
+function clearSelect(element_id)
+{
+  let noOfentries = document.getElementById(element_id).length
+  if (noOfentries > 0) {
+            for (i = 0; i < noOfentries; i++) {
+                document.getElementById(element_id).remove(0);
+            }
+        }
+}
+
 module.exports.updateModalHandler = (element_id, content) => {
   var el_type = $(`#${element_id}`).attr('bs-type')
   switch (el_type) {
@@ -957,6 +978,11 @@ module.exports.updateModalHandler = (element_id, content) => {
       renderCombo(element_id, content)
       $(`#${element_id}`).trigger('change');
       break;
+    case 'bskyselect':
+        renderSelect(element_id, content)
+        $(`#${element_id}`).trigger('change');
+        break;
+    
     case 'label':
       switch (typeof (content)) {
         case "boolean":
