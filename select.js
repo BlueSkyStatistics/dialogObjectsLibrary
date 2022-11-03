@@ -1,6 +1,5 @@
 var Sqrl = require('squirrelly');
 var baseElement = require('./baseElement').baseElement;
-
 class select extends baseElement{
     content;
     id;
@@ -9,7 +8,7 @@ class select extends baseElement{
     label = null
     htmlTemplate = `<div class="simple-select">
     <label for="{{modal.id}}_{{ms.no}}" class="mt-2 mr-2 small-label {{if(options.ms.style)}}{{ms.style}}{{/if}}">{{ms.label}} {{if(options.ms.required)}}<span class="required">*</span>{{/if}}</label>
-    <select class="form-select mb-3 w-100" bs-type="combobox" id="{{modal.id}}_{{ms.no}}" no="{{ms.no}}" extractable=true default="{{ms.default}}" extractionRule="{{ms.extraction}}">
+    <select class="form-select mb-3 w-100" bs-type="select" id="{{modal.id}}_{{ms.no}}" no="{{ms.no}}" extractable=true default="{{ms.default}}" extractionRule="{{ms.extraction}}">
         {{ each(options.ms.options) }}
             <option {{ if (options.ms.hasOwnProperty("default") && options.ms.default == @this)}} selected="selected"{{/if}}>{{@this}}</option>
         {{/each}}
@@ -39,6 +38,7 @@ class select extends baseElement{
     }
     clearContent() {
         $(`#${this.id}`).val(this.defaults)
+       //Note we don't remove the items from the select control. These remain on the dialog as in most cases they are static
     }
     canExecute(refToBaseModal) {
         if (this.required && this.getVal().length > 0) {
@@ -49,21 +49,5 @@ class select extends baseElement{
         dialog.showMessageBoxSync({ type: "error", buttons: ["OK"], title: "Select control rule violation", message: `You need to make a selection in the Select control with label: "${this.label}"` })
         return false
     }
-    // getVal() {
-    //     var res = []
-    //     res = $(`#${this.id}`).val()
-    //     // res in null when the control is empty
-    //     if (res != null) {
-    //         if (res.length == 1) {
-    //             return res[0]
-    //         } else {
-    //             return res
-    //         }
-    //     }
-    //     else {
-    //         //we return an empty string so that the call this.getVal().length does not create an exception 
-    //         return "";
-    //     }
-    // }
 }
 module.exports.element = select;

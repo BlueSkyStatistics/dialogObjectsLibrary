@@ -9,14 +9,14 @@ class selectDataset extends baseElement {
     htmlTemplate = `<div>
     <div class="simple-select">
     <label id="{{modal.id}}_{{ms.no}}label" class="mt-2 mr-2 small-label {{if(options.ms.style)}}{{ms.style}}{{/if}}">{{ms.label}} {{if(options.ms.required)}}<span class="required">*</span>{{/if}}</label>
-    <select class="form-select mb-3 w-100" bs-type="combobox" id="{{modal.id}}_{{ms.no}}" no="{{ms.no}}" extractable=false default="{{ms.default}}" extractionRule="{{ms.extraction}}">
+    <select class="form-select mb-3 w-100" bs-type="select" id="{{modal.id}}_{{ms.no}}" no="{{ms.no}}" extractable=true default="{{ms.default}}" extractionRule="{{ms.extraction}}">
         {{ each(options.ms.options) }}
             <option {{ if (options.ms.hasOwnProperty("default") && options.ms.default == @this)}} selected="selected"{{/if}}>{{@this}}</option>
         {{/each}}
     </select>
     <script>
         $(\`#{{modal.id}}_{{ms.no}}\`).on('change', function(){
-            populateVariablesOfDataset('{{modal.id}}_{{ms.no}}selVars', $(this).find(':selected').text())
+            populateVariablesOfDataset('{{modal.id}}_{{ms.no}}selVars','{{modal.id}}_{{ms.no}}tar', $(this).find(':selected').text(), "selected")
         })
     </script>
     </div>
@@ -45,16 +45,17 @@ class selectDataset extends baseElement {
         }
         this.defaults = config.hasOwnProperty("default") ? config.default : ""
         config.onselect_r = config.hasOwnProperty("onselect_r") ? JSON.stringify(config.onselect_r) : ""
-            this.content = Sqrl.Render(this.htmlTemplate, {
+        this.content = Sqrl.Render(this.htmlTemplate, {
             modal: modal,
             ms: config
         })
     }
     clearContent() {
-        $(`#${this.id}actVars`).children().each(function(index, element) {
+        //Note, we intentionally don't remove the contents of the select control that lists the dataset we are joining with
+        $(`#${this.id}actVars`).children().each(function (index, element) {
             element.remove()
         })
-        $(`#${this.id}selVars`).children().each(function(index, element) {
+        $(`#${this.id}selVars`).children().each(function (index, element) {
             element.remove()
         })
     }
@@ -68,34 +69,58 @@ class selectDataset extends baseElement {
         return false
     }
     fillContent() {
-        var activedataset = getActiveDataset()
+        let activedataset = ""
+        let selecteddataset = ""
+        let prevSelected = ""
+        activedataset = getActiveDataset()
         var datasets = getAllDatasets();
         var noOfdatasets = document.getElementById(this.id).length
         document.getElementById(this.id.concat("label")).innerHTML
-                = "Select a dataset to join " + activedataset + " with";
-        //Remove all the previously selected datasets
+            = "Select a dataset to join " + activedataset + " with";
+        //Find and save the selected dataset from history or a prior run of the dialog
+        if ($(`#${this.id}`).attr("selectedValues" ) != undefined)
+        {
+            prevSelected  =$(`#${this.id}`).attr("selectedValues" )
+            $(`#${this.id}`).removeAttr("selectedValues" )
+        }
+       
+        if (!datasets.includes(prevSelected))
+        {
+            prevSelected = ""
+        }
+        //Remove all the previously selected datasets associated with the dialog
+        //This may be from a previous launch of the mergedatasetsnew dialog
+        //This may be from the history from a mergedatasetsnew dialog launched from history
         if (noOfdatasets > 0) {
             for (i = 0; i < noOfdatasets; i++) {
                 document.getElementById(this.id).remove(0);
             }
         }
-        //Remove the active dataset
+        //Remove the active dataset from the datasets you are joining by
         datasets = datasets.filter(function (value, index, arr) {
             return value != activedataset;
         });
         //Add back all the active datasets
-        datasets.forEach(element => {
+        datasets.forEach((element, index) => {
             var option = document.createElement("option");
             option.text = element;
             document.getElementById(this.id).add(option);
+            if (prevSelected == element) {
+                $($(`#${this.id} option`)[index]).prop('selected', true)
+            }
         })
-        document.getElementById(this.id.concat("src")).innerText = "Variables from the active dataset " +activedataset;
-        document.getElementById(this.id.concat("tar")).innerText = "Variables from the selected dataset " +datasets[0];
+        //If the previously selected dataset is available for joining, lets select it
+        //However if the previously selected dataset is the active dataset, lets set the  selected dataset to the 1st dataset in the list
+        if (prevSelected == "" || (prevSelected == activedataset)) {
+            if (datasets[0] != "") prevSelected = datasets[0]
+        }
+        document.getElementById(this.id.concat("src")).innerText = "Variables from the active dataset " + activedataset;
+        document.getElementById(this.id.concat("tar")).innerText = "Variables from the selected dataset " + prevSelected;
         //Populate the variable list with the currect dataset
         if (datasets.length > 0) {
-            populateVariablesOfDataset(this.id.concat("selVars"), datasets[0])
+            populateVariablesOfDataset(this.id.concat("selVars"), this.id.concat("tar"), prevSelected, "selected")
         }
-        populateVariablesOfDataset(this.id.concat("actVars"), activedataset )
+        populateVariablesOfDataset(this.id.concat("actVars"), this.id.concat("src"), activedataset, "active")
     }
 }
 module.exports.element = selectDataset;
