@@ -19,16 +19,16 @@ class fileSaveControl extends baseElement{
         </div>
     </div>
     <div class="row">
+        <div class="col-4">
+            <button type="button" class="btn formula-btn p-1 w-100" onclick="saveFileControlDialog('{{modal.id}}_{{ms.no}}', '{{if(options.ms.type)}}{{ms.type}}{{#else}}file{{/if}}')" >Specify or select a {{if(options.ms.type)}}{{ms.type}}{{#else}}file{{/if}}</button>  
+        </div> 
         <div class="col-8">
             <input class="w-100" type="text" bs-type="file" 
                    id="{{modal.id}}_{{ms.no}}" 
                    no="{{ms.no}}" extractable=true 
                    extractionRule="{{ms.extraction}}" 
                    disabled />
-        </div>
-        <div class="col-4">
-            <button type="button" class="btn formula-btn p-1 w-100" onclick="saveFileControlDialog('{{modal.id}}_{{ms.no}}', '{{if(options.ms.type)}}{{ms.type}}{{#else}}file{{/if}}')" >Specify or select a {{if(options.ms.type)}}{{ms.type}}{{#else}}file{{/if}}</button>  
-        </div>        
+        </div>          
     </div>
     </div>`
 
@@ -45,7 +45,7 @@ class fileSaveControl extends baseElement{
     canExecute(refToBaseModal) {
         var outer_this = this;
         if (this.required && (this.getVal() === "" || this.getVal() == undefined)){
-            dialog.showMessageBoxSync({type: "error", buttons: ["OK"], title: "Input field rule violation", message: `Field with label: "${outer_this.label}" needs to be populated to proceed`})
+            dialog.showMessageBoxSync({type: "error", buttons: ["OK"], title: "Input field rule violation", message: `You need to select a file using the button with label: "${outer_this.label}" to proceed`})
             return false
         } else if ( ! this.required && (this.getVal() === "" || this.getVal() == undefined)){
             return true

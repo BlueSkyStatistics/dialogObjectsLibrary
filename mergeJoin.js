@@ -12,8 +12,9 @@ class mergeJoin extends baseElement{
         <div class="col-6">
             <label for="{{modal.id}}_{{ms.no}}" class="mt-2 mr-2 small-label {{if(options.ms.style)}}{{ms.style}}{{/if}}"><h6>{{ms.label}}{{if(options.ms.required)}}<span class="required">*</span>{{/if}}</h6></label>
         </div>
-    </div>
-    <div class="row"  >
+        <div class="col-12">
+            <label for="{{modal.id}}_{{ms.no}}Lab" class="mt-2 mr-2 small-label {{if(options.ms.style)}}{{ms.style}}{{/if}}">Select a variable from the active dataset and a variable in the select dataset and click Add</label>
+        </div>
         <div class="col-3">
             <button type="button" class="btn btn-outline-secondary btn-text" onclick="addToJoin( modal_id = &quot;{{modal.id}}&quot; ,listOfVariablesToJoinBy =&quot;{{modal.id}}_{{ms.no}}_joinMap&quot; );">Add</button>
             <button type="button" class="btn btn-outline-secondary btn-text" onclick="removeFromJoin( listOfVariablesToJoinBy =&quot;{{modal.id}}_{{ms.no}}_joinMap&quot; );">Delete</button>
@@ -24,7 +25,6 @@ class mergeJoin extends baseElement{
                 </ul>
             </div>
         </div>                  
-    </div>
     </div>
     `
     constructor(modal, config) {

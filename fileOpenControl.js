@@ -13,28 +13,34 @@ class fileOpenControl extends baseElement{
         label = null
     width = "w-75"
     htmlTemplate = `<div class="{{if(options.ms.style)}}{{ms.style}}{{/if}} {{if(options.ms.ml)}}ml-{{ms.ml}}{{/if}}">
-    <div class="row">
-        <div class="col-12">
-            <label for="{{modal.id}}_{{ms.no}}" class="mt-2 mr-2 small-label">{{ms.label}} {{if(options.ms.required)}}<span class="required">*</span>{{/if}}</label>
+        <div class="row">
+            <div class="col-12">
+                <label for="{{modal.id}}_{{ms.no}}" class="mt-2 mr-2 small-label">{{ms.label}} {{if(options.ms.required)}}<span class="required">*</span>{{/if}}</label>
+            </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-8">
-            <input class="w-100" type="text" bs-type="file" 
-                   id="{{modal.id}}_{{ms.no}}" 
-                   no="{{ms.no}}" extractable=true 
-                   extractionRule="{{ms.extraction}}" 
-                   disabled />
+        <div class="row">
+            <div class="col-4">
+                <button type="button" id="{{modal.id}}_{{ms.no}}_btn" class="btn formula-btn p-1 w-100" onclick="openFileControlDialog('{{modal.id}}_{{ms.no}}', '{{if(options.ms.type)}}{{ms.type}}{{#else}}file{{/if}}')" >Choose {{if(options.ms.type)}}{{ms.type}}{{#else}}file{{/if}}</button>  
+            </div> 
+            <div class="col-8">
+                <input class="w-100" type="text" bs-type="file" 
+                    id="{{modal.id}}_{{ms.no}}" 
+                    no="{{ms.no}}" extractable=true 
+                    extractionRule="{{ms.extraction}}" 
+                    disabled />
+            </div>         
         </div>
-        <div class="col-4">
-            <button type="button" id="{{modal.id}}_{{ms.no}}_btn" class="btn formula-btn p-1 w-100" onclick="openFileControlDialog('{{modal.id}}_{{ms.no}}', '{{if(options.ms.type)}}{{ms.type}}{{#else}}file{{/if}}')" >Choose {{if(options.ms.type)}}{{ms.type}}{{#else}}file{{/if}}</button>  
-        </div>        
-    </div>
     </div>`
 
     constructor(modal, config) {
         super(modal, config)
         this.label = config.label
+        if (config.type !== undefined) {
+            this.type = config.type;
+        }
+        else {
+            this.type = "file"
+        }
         if (config.required) {
             this.required = config.required;
         }
@@ -44,8 +50,11 @@ class fileOpenControl extends baseElement{
     
     canExecute(refToBaseModal) {
         var outer_this = this;
-        if (this.required && (this.getVal() === "" || this.getVal() == undefined)){
-            dialog.showMessageBoxSync({type: "error", buttons: ["OK"], title: "Input field rule violation", message: `Field with label: "${outer_this.label}" needs to be populated to proceed`})
+        if (this.required && (this.getVal() === "" || this.getVal() == undefined) && this.type =="file"){
+            dialog.showMessageBoxSync({type: "error", buttons: ["OK"], title: "Input field rule violation", message: `Please select a file from the browse button with label: "${outer_this.label}" and re-execute`})
+            return false
+        } else if (this.required && (this.getVal() === "" || this.getVal() == undefined) && this.type =="folder"){
+            dialog.showMessageBoxSync({type: "error", buttons: ["OK"], title: "Input field rule violation", message: `Please select a folder from the browse button with label: "${outer_this.label}" and re-execute`})
             return false
         } else if ( ! this.required && (this.getVal() === "" || this.getVal() == undefined)){
             return true
@@ -53,7 +62,7 @@ class fileOpenControl extends baseElement{
         try {
             fs.statSync(this.getVal())
         } catch (ex) {
-            dialog.showMessageBoxSync({type: "error", buttons: ["OK"], title: "File input field rule violation", message: `The file input field with label: "${outer_this.label}" contains path that doesn't exists`})
+            dialog.showMessageBoxSync({type: "error", buttons: ["OK"], title: "File input field rule violation", message: `The browse button with label: "${outer_this.label}" contains path that doesn't exist`})
             return false
         }
         return true
