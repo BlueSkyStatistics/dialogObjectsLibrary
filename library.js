@@ -102,6 +102,7 @@ module.exports = {
     "selectElementMergeDatasets": handlers.selectElementMergeDatasets,
     "addToJoin" : handlers.addToJoin,
     "removeFromJoin" : handlers.removeFromJoin,
-    "selectForDeletionMergeDatasets": handlers.selectForDeletionMergeDatasets
+    "selectForDeletionMergeDatasets": handlers.selectForDeletionMergeDatasets,
+    "selectListItem":handlers.selectListItem,
     
 }
