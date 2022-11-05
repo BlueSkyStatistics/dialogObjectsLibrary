@@ -362,7 +362,7 @@ function combinations(arr, k) {
 }
 function _form_new_formula_value(objects, cursorPosition, formula_value, active_val, onlyIncrement = false) {
   var additive = ['+', '-', '*', '^', '/', ':', '%', '']
-  var insertive = ['(', ')', '|', '&', '>', '<', '==', '!=', '>=', '=<', '%in%', '%\%']
+  var insertive = ['(', ')', '|', '&', '>', '<', '==', '!=', '>=', '=<', '%in%', '%/%']
   var wraparive = ['sqrt', 'log', 'log10', 'log2', 'abs', 'exp', 'ceiling', 'floor', "as.numeric", "max", "min", "mean", "median", "sd", "sum", "variance"]
   //Multiple variables NOT allowed
   var multiVariables = ['ToOrdered', 'ToFactor', "ToLogical", "Day of Week", "Month", "Quarters", "Year(XXXX)", "Year(XX)", "Hour(00-12)", "Hour(00-23)", "Date from String", 'Numeric to date', "isTRUE", "is.na"]

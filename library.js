@@ -61,6 +61,7 @@ module.exports = {
     "updateModalHandler": handlers.updateModalHandler,
     "renderChild": handlers.renderChild,
     "renderDependants": handlers.renderDependants,
+    "toFocusedInput": handlers.toFocusedInput,
     "changeRadio": handlers.changeRadio,
     "changeCheckBox": handlers.changeCheckBox,
     "resetComputeBuilderButtons": handlers.resetComputeBuilderButtons,
