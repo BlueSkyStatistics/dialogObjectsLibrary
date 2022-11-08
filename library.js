@@ -41,7 +41,7 @@ module.exports = {
     "modeToDst": handlers.moveToDst,
     "arrangeFocus": handlers.arrangeFocus,
     "toFormula": handlers.toFormula,
-    "toFocusedInport": handlers.toFocusedInput,
+    "toFocusedInput": handlers.toFocusedInput,
     "dropWrapped": handlers.dropWrapped,
     "dropToInputAditive": handlers.dropToInputAditive,
     "dropToInput": handlers.dropToInput,
@@ -103,6 +103,7 @@ module.exports = {
     "selectElementMergeDatasets": handlers.selectElementMergeDatasets,
     "addToJoin" : handlers.addToJoin,
     "removeFromJoin" : handlers.removeFromJoin,
-    "selectForDeletionMergeDatasets": handlers.selectForDeletionMergeDatasets
+    "selectForDeletionMergeDatasets": handlers.selectForDeletionMergeDatasets,
+    "selectListItem":handlers.selectListItem,
     
 }

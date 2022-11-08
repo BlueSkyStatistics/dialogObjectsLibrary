@@ -15,9 +15,9 @@ class repMeasuresCTRL extends baseElement {
                 <div class="row" >
                 <div class ="ml-2">
                 NOTE:<br/><br/>
-1. We need to reshape the data when running a repeated measures ANOVA on a wide dataset<br/>
+1. The application needs to reshape the data when running a repeated measures ANOVA on a wide dataset<br/>
 2. We support multiple repeated measures for a single variable e.g. Blood Sugar measured at pretest, posttest and at a followup visit<br/>
-3. You need to specify a repeated factor name e.g. Blood Sugar and the number of levels. We will create a factor variable e.g. named Blood Sugar with levels created from the names of the variables containing the repeated measures e.g. the levels of the factor will be pretest, posttest and followup<br/>
+3. For the application to reshape the data, you need to specify a repeated factor name e.g. Blood Sugar and the number of levels. We will create a factor variable e.g. named Blood Sugar with levels created from the names of the variables containing the repeated measures e.g. the levels of the factor will be pretest, posttest and followup<br/>
 4. You need to specify a measure name e.g. Value. We will create a variable e.g. Value with all the Blood Sugar values corresponding to the pretest, posttest and followup for each subject.<br/>
 5. We support a single between-subject and within-subject factor variable.<br/>
 6. Future versions will support multiple measures as well as multiple between subject and within subject factor variables.<br/><br/>

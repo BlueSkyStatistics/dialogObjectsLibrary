@@ -886,7 +886,7 @@ module.exports.openFileControlDialog = (id, dialog_type) => {
   }
   filepath = dialog.showOpenDialogSync(getCurrentWindow(), {
     title: 'Open File',
-    buttonLabel: 'Open',
+    buttonLabel: 'Select',
     properties: openDialogProps
   })
   if (filepath !== undefined) {
@@ -900,7 +900,7 @@ module.exports.saveFileControlDialog = (id, dialog_type) => {
   ]
   filepath = dialog.showSaveDialogSync(getCurrentWindow(), {
     title: 'Specify a file name or select a file to save selected model(s) to',
-    buttonLabel: 'Save',
+    buttonLabel: 'Select',
     properties: saveDialogProps,
     filters: extensions
   })

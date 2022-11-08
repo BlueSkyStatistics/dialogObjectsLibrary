@@ -7,6 +7,13 @@ class selectDataset extends baseElement {
     defaults;
     label = null
     htmlTemplate = `<div>
+    <h6 id="{{modal.id}}_{{ms.no}}src">{{if (options.ms.label)}}{{ms.label}}{{#else}}Source variables{{/if}}</h6>
+    <div class="form-check list-group var-list" multiple
+     id="{{modal.id}}_{{ms.no}}actVars"
+     modal_id="{{modal.id}}"
+     {{if (options.ms.action)}}act="{{ms.action}}"{{#else}}act="copy"{{/if}}  
+     bs-type="cols" ondrop="drop(event)" ondragover="allowDrop(event)">
+    </div>
     <div class="simple-select">
     <label id="{{modal.id}}_{{ms.no}}label" class="mt-2 mr-2 small-label {{if(options.ms.style)}}{{ms.style}}{{/if}}">{{ms.label}} {{if(options.ms.required)}}<span class="required">*</span>{{/if}}</label>
     <select class="form-select mb-3 w-100" bs-type="select" id="{{modal.id}}_{{ms.no}}" no="{{ms.no}}" extractable=true default="{{ms.default}}" extractionRule="{{ms.extraction}}">
@@ -19,13 +26,6 @@ class selectDataset extends baseElement {
             populateVariablesOfDataset('{{modal.id}}_{{ms.no}}selVars','{{modal.id}}_{{ms.no}}tar', $(this).find(':selected').text(), "selected")
         })
     </script>
-    </div>
-    <h6 id="{{modal.id}}_{{ms.no}}src">{{if (options.ms.label)}}{{ms.label}}{{#else}}Source variables{{/if}}</h6>
-    <div class="form-check list-group var-list" multiple
-     id="{{modal.id}}_{{ms.no}}actVars"
-     modal_id="{{modal.id}}"
-     {{if (options.ms.action)}}act="{{ms.action}}"{{#else}}act="copy"{{/if}}  
-     bs-type="cols" ondrop="drop(event)" ondragover="allowDrop(event)">
     </div>
     <h6 id="{{modal.id}}_{{ms.no}}tar">{{if (options.ms.label)}}{{ms.label}}{{#else}}Source variables{{/if}}</h6>
     <div class="form-check list-group var-list" multiple
