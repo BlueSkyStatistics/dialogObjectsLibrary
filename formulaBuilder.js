@@ -22,8 +22,8 @@ class formulaControl extends baseElement {
                     formula-btn w-100 {{if(options.ms.default=="plus" )}}activated{{/if}}" val="+" 
                     onclick="toggleButton(event)" ondblclick="toFormula(event)"
                     data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Click the <b>+</b> symbol then move the variables you want 
-                    to separate with <b>+</b>. To insert just <b>+</b> , double click it">
+                    title="Click the + symbol then move the variables you want 
+                    to separate with +. To insert just + , double click it">
                     <i class="fas fa-plus"></i>
                 </button>
                 </div>
@@ -31,8 +31,8 @@ class formulaControl extends baseElement {
                     <button type="button" class="btn btn-outline-secondary formula-btn w-100" 
                         val="-" onclick="toggleButton(event)" ondblclick="toFormula(event)"
                         data-toggle="tooltip" data-html="true" data-placement="top"   
-                        title="Click the <b>-</b> symbol then move the variables you want 
-                        to separate with <b>-</b>. To insert just <b>-</b>, double click it">
+                        title="Click the - symbol then move the variables you want 
+                        to separate with -. To insert just -, double click it">
                         <i class="fas fa-minus"></i>
                     </button>
                 </div>
@@ -40,8 +40,8 @@ class formulaControl extends baseElement {
                     <button type="button" class="btn btn-outline-secondary formula-btn w-100 {{if(options.ms.default=="asterix" )}}activated{{/if}}" 
                     val="*" onclick="toggleButton(event)" ondblclick="toFormula(event)"
                     data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Click the <b>*</b> symbol then move the variables you want 
-                    to separate with <b>*</b>. To insert just <b>*</b>, double click it">
+                    title="Click the * symbol then move the variables you want 
+                    to separate with *. To insert just *, double click it">
                         <i class="fas fa-asterisk"></i>
                     </button>
                 </div>
@@ -49,8 +49,8 @@ class formulaControl extends baseElement {
                     <button type="button" class="btn btn-outline-secondary formula-btn w-100" 
                     val="/" onclick="toggleButton(event)"  ondblclick="toFormula(event)"
                     data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Click the <b>/</b> symbol then move the variables you want to separate 
-                    with <b>/</b>. To insert just <b>/</b>, double click it">
+                    title="Click the / symbol then move the variables you want to separate 
+                    with /. To insert just /, double click it">
                         /
                     </button>
                 </div>
@@ -58,7 +58,7 @@ class formulaControl extends baseElement {
                     <button type="button" class="btn btn-outline-secondary formula-btn w-100" 
                         val="(" onclick="toFormula(event)"
                         data-toggle="tooltip" data-html="true" data-placement="top"   
-                        title="Click the <b>(</b> symbol to insert it">
+                        title="Click the ( symbol to insert it">
                         (
                     </button>
                 </div>
@@ -66,7 +66,7 @@ class formulaControl extends baseElement {
                     <button type="button" class="btn btn-outline-secondary formula-btn w-100" val=")" 
                         onclick="toFormula(event)"
                         data-toggle="tooltip" data-html="true" data-placement="top"   
-                        title="Click the <b>)</b> symbol to insert it">
+                        title="Click the ) symbol to insert it">
                         )
                     </button>
                 </div>
@@ -81,27 +81,27 @@ class formulaControl extends baseElement {
                 <button type="button" class="btn btn-outline-secondary formula-btn w-100" 
                     val="%in%" onclick="toggleButton(event)" ondblclick="toFormula(event)"
                     data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Click the <b>%in%</b> symbol then move the variables you want 
-                    to separate with <b>%in%</b>. To insert just <b>%in%</b>, double click it">
-                    <b>%in%</b>
+                    title="Click the %in% symbol then move the variables you want 
+                    to separate with %in%. To insert just %in%, double click it">
+                    %in%
                 </button>
                 </div>
                 <div class="col p-0">
                 <button type="button" class="btn btn-outline-secondary formula-btn w-100" val="|" 
                     onclick="toFormula(event)"
                     data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Click the <b>|</b> symbol to insert it">
-                    <b>|</b>
+                    title="Click the | symbol to insert it">
+                    |
                 </button>
                  </div>
                     <div class="col p-0">
                         <button type="button" class="btn btn-outline-secondary formula-btn w-100" val=":" 
                             onclick="toggleButton(event)" ondblclick="toFormula(event)"
                             data-toggle="tooltip" data-html="true" data-placement="top"   
-                        title="Click the <b>:</b> symbol then move the variables you 
-                        want to separate with <b>:</b>. To insert just <b>:</b> , 
+                        title="Click the : symbol then move the variables you 
+                        want to separate with :. To insert just : , 
                         double click it">
-                        <b>:</b>
+                        :   
                     </button>
                 </div>
                 <div class="col col-3 p-0">
@@ -121,7 +121,7 @@ class formulaControl extends baseElement {
                 </div>
                 <div class="col col-2 p-0">
                 <div class="formula-btn pl-1" val="^">
-                    <b>^</b>
+                    ^
                     <input class="w-75 formula-select formula-options" type="number" 
                         bs-type="text" min="0" max="10000" step="1"  default="2" value="2" 
                         onclick="toggleSelect(event)" onchange="toggleSelect(event)"

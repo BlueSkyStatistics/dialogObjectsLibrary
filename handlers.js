@@ -321,7 +321,14 @@ function _calculate_position(formula_value, formula_addon, cursorPosition, sign,
         } else {
           formula_addon = `${last_} ${sign} ${formula_addon} ${first_}`
         }
+      } else {
+        if (onlyIncrement) {
+          formula_addon = ` ${sign} ${formula_addon}`
+        } else {
+          formula_addon = `${last_} ${sign} ${formula_addon} ${sign} ${first_}`
+        }
       }
+      //else case is when I am not inserting before or after a plus
     } else {
       if (onlyIncrement) {
         formula_addon = ` ${sign} ${formula_addon}`
@@ -329,9 +336,11 @@ function _calculate_position(formula_value, formula_addon, cursorPosition, sign,
         formula_addon = `${formula_value} ${sign} ${formula_addon}`
       }
     }
+ 
   } else if (formula_addon === undefined) {
     formula_addon = sign
   }
+  //When we are dragging and dropping into an empty text area we return formula_addon
   return formula_addon
 }
 function combinations(arr, k) {

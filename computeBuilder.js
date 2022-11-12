@@ -139,8 +139,8 @@ class computeBuilder extends baseElement{
                                     formula-btn w-100 m-0 activated" val="+" 
                                     onclick="toggleButton(event)" ondblclick="toFormula(event)"
                                     data-toggle="tooltip" data-html="true" data-placement="top"   
-                                    title="Click the <b>+</b> symbol then move the variables you want 
-                                    to separate with <b>+</b>. To insert just <b>+</b> , double click it">
+                                    title="Click the + symbol then move the variables you want 
+                                    to separate with +. To insert just + , double click it">
                                     <i class="fas fa-plus"></i>
                                 </button>
                             </div>
@@ -148,8 +148,8 @@ class computeBuilder extends baseElement{
                                 <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
                                     val="-" onclick="toggleButton(event)" ondblclick="toFormula(event)"
                                     data-toggle="tooltip" data-html="true" data-placement="top"   
-                                    title="Click the <b>-</b> symbol then move the variables you want 
-                                    to separate with <b>-</b>. To insert just <b>-</b>, double click it">
+                                    title="Click the - symbol then move the variables you want 
+                                    to separate with -. To insert just -, double click it">
                                     <i class="fas fa-minus"></i>
                                 </button>
                             </div>
@@ -157,8 +157,8 @@ class computeBuilder extends baseElement{
                                 <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
                                 val="*" onclick="toggleButton(event)" ondblclick="toFormula(event)"
                                 data-toggle="tooltip" data-html="true" data-placement="top"   
-                                title="Click the <b>*</b> symbol then move the variables you want 
-                                to separate with <b>*</b>. To insert just <b>*</b>, double click it">
+                                title="Click the * symbol then move the variables you want 
+                                to separate with *. To insert just *, double click it">
                                     <i class="fas fa-asterisk"></i>
                                 </button>
                             </div>
@@ -166,8 +166,8 @@ class computeBuilder extends baseElement{
                                 <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
                                 val="/" onclick="toggleButton(event)"  ondblclick="toFormula(event)"
                                 data-toggle="tooltip" data-html="true" data-placement="top"   
-                                title="Click the <b>/</b> symbol then move the variables you want to separate 
-                                with <b>/</b>. To insert just <b>/</b>, double click it">
+                                title="Click the / symbol then move the variables you want to separate 
+                                with /. To insert just /, double click it">
                                     /
                                 </button>
                             </div>
