@@ -15,17 +15,17 @@ class selectDataset extends baseElement {
      bs-type="cols" ondrop="drop(event)" ondragover="allowDrop(event)">
     </div>
     <div class="simple-select">
-    <label id="{{modal.id}}_{{ms.no}}label" class="mt-2 mr-2 small-label {{if(options.ms.style)}}{{ms.style}}{{/if}}">{{ms.label}} {{if(options.ms.required)}}<span class="required">*</span>{{/if}}</label>
-    <select class="form-select mb-3 w-100" bs-type="select" id="{{modal.id}}_{{ms.no}}" no="{{ms.no}}" extractable=true default="{{ms.default}}" extractionRule="{{ms.extraction}}">
-        {{ each(options.ms.options) }}
-            <option {{ if (options.ms.hasOwnProperty("default") && options.ms.default == @this)}} selected="selected"{{/if}}>{{@this}}</option>
-        {{/each}}
-    </select>
-    <script>
-        $(\`#{{modal.id}}_{{ms.no}}\`).on('change', function(){
-            populateVariablesOfDataset('{{modal.id}}_{{ms.no}}selVars','{{modal.id}}_{{ms.no}}tar', $(this).find(':selected').text(), "selected")
-        })
-    </script>
+        <label id="{{modal.id}}_{{ms.no}}label" class="mt-2 mr-2 small-label {{if(options.ms.style)}}{{ms.style}}{{/if}}">{{ms.label}} {{if(options.ms.required)}}<span class="required">*</span>{{/if}}</label>
+        <select class="form-select mb-3 w-100" bs-type="select" id="{{modal.id}}_{{ms.no}}" no="{{ms.no}}" extractable=true default="{{ms.default}}" extractionRule="{{ms.extraction}}">
+            {{ each(options.ms.options) }}
+                <option {{ if (options.ms.hasOwnProperty("default") && options.ms.default == @this)}} selected="selected"{{/if}}>{{@this}}</option>
+            {{/each}}
+        </select>
+        <script>
+            $(\`#{{modal.id}}_{{ms.no}}\`).on('change', function(){
+                populateVariablesOfDataset('{{modal.id}}_{{ms.no}}selVars','{{modal.id}}_{{ms.no}}tar', $(this).find(':selected').text(), "selected")
+            })
+        </script>
     </div>
     <h6 id="{{modal.id}}_{{ms.no}}tar">{{if (options.ms.label)}}{{ms.label}}{{#else}}Source variables{{/if}}</h6>
     <div class="form-check list-group var-list" multiple
@@ -114,13 +114,13 @@ class selectDataset extends baseElement {
         if (prevSelected == "" || (prevSelected == activedataset)) {
             if (datasets[0] != "") prevSelected = datasets[0]
         }
-        document.getElementById(this.id.concat("src")).innerText = "Variables from the active dataset " + activedataset;
-        document.getElementById(this.id.concat("tar")).innerText = "Variables from the selected dataset " + prevSelected;
+        document.getElementById(this.id.concat("src")).innerText = "Variables from the active (left) dataset " + activedataset;
+        document.getElementById(this.id.concat("tar")).innerText = "Variables from the selected (right) dataset " + prevSelected;
         //Populate the variable list with the currect dataset
         if (datasets.length > 0) {
-            populateVariablesOfDataset(this.id.concat("selVars"), this.id.concat("tar"), prevSelected, "selected")
+            populateVariablesOfDataset(this.id.concat("selVars"), this.id.concat("tar"), prevSelected, "selected (right)")
         }
-        populateVariablesOfDataset(this.id.concat("actVars"), this.id.concat("src"), activedataset, "active")
+        populateVariablesOfDataset(this.id.concat("actVars"), this.id.concat("src"), activedataset, "active (left)")
     }
 }
 module.exports.element = selectDataset;
