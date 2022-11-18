@@ -30,6 +30,11 @@ var fileSaveControl = require('./fileSaveControl').element
 var labelHelpSixSigma = require('./labelHelpSixSigma').element
 var selectDataset = require('./selectDataset').element
 var mergeJoin = require('./mergeJoin').element
+var OutputOpt = require('./settingsOptions').OutputOpt
+var OutputTblOpt = require('./settingsOptions').OutputTblOpt
+var MiscOpt = require('./settingsOptions').MiscOpt
+var DatabaseOpt = require('./settingsOptions').DatabaseOpt
+var SaveAppSettings = require('./settingsOptions').SaveAppSettings
 
 
 module.exports = {
@@ -101,6 +106,11 @@ module.exports = {
     "labelHelpSixSigma": labelHelpSixSigma,
     "selectDataset": selectDataset,
     "mergeJoin":mergeJoin,
+    "OutputOpt": OutputOpt,
+    "OutputTblOpt": OutputTblOpt,
+    "MiscOpt": MiscOpt,
+    "DatabaseOpt": DatabaseOpt,
+    "SaveAppSettings": SaveAppSettings,
     "selectElementMergeDatasets": handlers.selectElementMergeDatasets,
     "addToJoin" : handlers.addToJoin,
     "removeFromJoin" : handlers.removeFromJoin,
