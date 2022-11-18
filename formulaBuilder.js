@@ -10,7 +10,7 @@ class formulaControl extends baseElement {
         <div class="row">
             <div class="col col-xx"></div>
             <div class="col col-rr">
-                <h6>Formula Builder: Moving multiple variables with the move button uses a default separator of +, indicating independent variables without interaction terms. Mouse over symbols for help.{{if(options.ms.required)}}<span class="required">*</span>{{/if}}</h6>
+                <h6>Formula Builder: Click on a button and move variables to create a formula. Clicking a selected button will toggle state. Mouse over a button for help. Note: You cannot deactivate the All N Ways button. {{if(options.ms.required)}}<span class="required">*</span>{{/if}}</h6>
             </div>
         </div>
         <div class="row">
@@ -19,54 +19,54 @@ class formulaControl extends baseElement {
             <div class="row pr-15">
                 <div class="col p-0">
                 <button type="button" class="btn btn-outline-secondary 
-                    formula-btn w-100 {{if(options.ms.default=="plus" )}}activated{{/if}}" val="+" 
-                    onclick="toggleButton(event)" ondblclick="toFormula(event)"
+                    formula-btn w-100 m-0 {{if(options.ms.default=="plus" )}}activated{{/if}}" val="+" 
+                    onclick="toggleButton(event, true)" ondblclick="toFormula(event)"
                     data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Click the + symbol then move the variables you want 
+                    title="Click the + button then move the variables you want 
                     to separate with +. To insert just + , double click it">
                     <i class="fas fa-plus"></i>
                 </button>
                 </div>
                 <div class="col p-0">
-                    <button type="button" class="btn btn-outline-secondary formula-btn w-100" 
-                        val="-" onclick="toggleButton(event)" ondblclick="toFormula(event)"
+                    <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
+                        val="-" onclick="toggleButton(event, true)" ondblclick="toFormula(event)"
                         data-toggle="tooltip" data-html="true" data-placement="top"   
-                        title="Click the - symbol then move the variables you want 
+                        title="Click the - button then move the variables you want 
                         to separate with -. To insert just -, double click it">
                         <i class="fas fa-minus"></i>
                     </button>
                 </div>
                 <div class="col p-0">
-                    <button type="button" class="btn btn-outline-secondary formula-btn w-100 {{if(options.ms.default=="asterix" )}}activated{{/if}}" 
-                    val="*" onclick="toggleButton(event)" ondblclick="toFormula(event)"
+                    <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0{{if(options.ms.default=="asterix" )}}activated{{/if}}" 
+                    val="*" onclick="toggleButton(event, true)" ondblclick="toFormula(event)"
                     data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Click the * symbol then move the variables you want 
+                    title="Click the * button then move the variables you want 
                     to separate with *. To insert just *, double click it">
                         <i class="fas fa-asterisk"></i>
                     </button>
                 </div>
                 <div class="col p-0">
-                    <button type="button" class="btn btn-outline-secondary formula-btn w-100" 
-                    val="/" onclick="toggleButton(event)"  ondblclick="toFormula(event)"
+                    <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
+                    val="/" onclick="toggleButton(event, true)"  ondblclick="toFormula(event)"
                     data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Click the / symbol then move the variables you want to separate 
+                    title="Click the / button then move the variables you want to separate 
                     with /. To insert just /, double click it">
                         /
                     </button>
                 </div>
                 <div class="col p-0">
-                    <button type="button" class="btn btn-outline-secondary formula-btn w-100" 
+                    <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
                         val="(" onclick="toFormula(event)"
                         data-toggle="tooltip" data-html="true" data-placement="top"   
-                        title="Click the ( symbol to insert it">
+                        title="Click the ( button to insert it">
                         (
                     </button>
                 </div>
                 <div class="col p-0">
-                    <button type="button" class="btn btn-outline-secondary formula-btn w-100" val=")" 
+                    <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" val=")" 
                         onclick="toFormula(event)"
                         data-toggle="tooltip" data-html="true" data-placement="top"   
-                        title="Click the ) symbol to insert it">
+                        title="Click the ) button to insert it">
                         )
                     </button>
                 </div>
@@ -77,37 +77,37 @@ class formulaControl extends baseElement {
         <div class="col col-xx"></div>
         <div class="col col-rr">
             <div class="row pr-15">
-                <div class="col p-0">
-                <button type="button" class="btn btn-outline-secondary formula-btn w-100" 
-                    val="%in%" onclick="toggleButton(event)" ondblclick="toFormula(event)"
+                <div class="col col-2 p-0">
+                <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
+                    val="%in%" onclick="toggleButton(event, true)" ondblclick="toFormula(event)"
                     data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Click the %in% symbol then move the variables you want 
+                    title="Click the %in% button then move the variables you want 
                     to separate with %in%. To insert just %in%, double click it">
                     %in%
                 </button>
                 </div>
-                <div class="col p-0">
-                <button type="button" class="btn btn-outline-secondary formula-btn w-100" val="|" 
+                <div class="col col-1 p-0">
+                <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" val="|" 
                     onclick="toFormula(event)"
                     data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Click the | symbol to insert it">
+                    title="Click the | button to insert it">
                     |
                 </button>
                  </div>
-                    <div class="col p-0">
-                        <button type="button" class="btn btn-outline-secondary formula-btn w-100" val=":" 
-                            onclick="toggleButton(event)" ondblclick="toFormula(event)"
+                    <div class="col col-1 p-0">
+                        <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" val=":" 
+                            onclick="toggleButton(event, true)" ondblclick="toFormula(event)"
                             data-toggle="tooltip" data-html="true" data-placement="top"   
-                        title="Click the : symbol then move the variables you 
+                        title="Click the : button then move the variables you 
                         want to separate with :. To insert just : , 
                         double click it">
                         :   
                     </button>
                 </div>
                 <div class="col col-3 p-0">
-                    <select class="custom-select formula-select" onclick="toggleButton(event)" onchange="toggleButton(event)"
+                    <select class="custom-select formula-select m-0" onclick="toggleButton(event)" onchange="toggleButton(event)"
                         data-toggle="tooltip" data-html="true" data-placement="top"   
-                        title="Select the All N-way option and then move the variables to create N-way interactions">
+                        title="Click the All N-way option and then move the variables to create N-way interactions. To deactivate click another button.">
                         <option value="2">All 2 ways</option>
                         <option value="3">All 3 ways</option>
                         <option value="4">All 4 ways</option>
@@ -119,19 +119,86 @@ class formulaControl extends baseElement {
                         <option value="10">All 10 ways</option>
                     </select>
                 </div>
-                <div class="col col-2 p-0">
-                <div class="formula-btn pl-1" val="^">
-                    ^
-                    <input class="w-75 formula-select formula-options" type="number" 
+                <div class="col col-5 p-0">
+                <div class="formula-btn pl-1 m-0" val="^" onclick="toggleSelectPoly(event,&quot;{{modal.id}}_{{ms.no}}_polyTerms&quot; )">
+                    Polynomial terms
+                    <input class="w-25 formula-select formula-options" type="number" id="{{modal.id}}_{{ms.no}}_polyTerms" 
                         bs-type="text" min="0" max="10000" step="1"  default="2" value="2" 
-                        onclick="toggleSelect(event)" onchange="toggleSelect(event)"
+                        onclick="toggleButton(event, true)" onchange="toggleSelect(event)"
                         data-toggle="tooltip" data-html="true" data-placement="top"   
-                        title="Select a number and move the variables to add degree N polynomial terms">
+                        title="Select a number, click the button and move the variables to add degree N polynomial terms">
                 </div>
                 </div>
             </div>
         </div>
     </div>
+    
+    <div class="row">
+    <div class="col col-xx"></div>
+    <div class="col col-rr">
+            <div class="row pr-15">
+                <div class="col col-3 p-0">
+                    <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
+                        val="B-spline" onclick="toggleButton(event, true)" ondblclick="toFormula(event)"
+                        data-toggle="tooltip" data-html="true" data-placement="top"   
+                        title="Click B-spline then move one or more variables. To insert generic code, double click">
+                        <b>B-spline</b>
+                    </button>
+                </div>
+                <div class="col col-3 p-0">
+                    <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" val="natural spline" 
+                        onclick="toggleButton(event, true)" ondblclick="toFormula(event)"
+                        data-toggle="tooltip" data-html="true" data-placement="top"   
+                        title="Click natural spline then move one or more variables. To insert generic code, double click">
+                        <b>Natural spline</b>
+                    </button>
+                </div>
+                <div class="col col-6 p-0">
+                    <div class="formula-btn pl-1 m-0" val="df for splines">
+                    df for splines
+                    <input class="w-50 formula-select formula-options" type="number" id="{{modal.id}}_{{ms.no}}_splinesDeg" 
+                    bs-type="text" min="0" max="10000" step="1"  default="5" value="5" 
+                    data-toggle="tooltip" data-html="true" data-placement="top"   
+                    title="Specify a degree of freedom for splines">
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col col-xx"></div>
+    <div class="col col-rr">
+            <div class="row pr-15">
+                <div class="col col-4 p-0">
+                    <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
+                        val="Orthogonal polynomial" onclick="toggleButton(event, true)" ondblclick="toFormula(event)"
+                        data-toggle="tooltip" data-html="true" data-placement="top"   
+                        title="Click the orthogonal polynomial button then move one or more variables. To insert generic code, double click">
+                        <b>Orthogonal polynomial</b>
+                    </button>
+                </div>
+                <div class="col col-3 p-0">
+                    <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" val="Raw polynomial" 
+                    onclick="toggleButton(event, true)" ondblclick="toFormula(event)"
+                        data-toggle="tooltip" data-html="true" data-placement="top"   
+                        title="Click raw polynomial button then move one or more variables. To insert generic code, double click">
+                        <b>Raw polynomial</b>
+                    </button>
+                </div>
+                <div class="col col-5 p-0">
+                    <div class="formula-btn pl-1 m-0" val="Polynomial degree">
+                    Polynomial degree
+                    <input class="w-25 formula-select formula-options" type="number" id="{{modal.id}}_{{ms.no}}_polyDeg" 
+                    bs-type="text" min="0" max="10000" step="1"  default="5" value="5" 
+                    data-toggle="tooltip" data-html="true" data-placement="top"   
+                    title="Specify a polynomial degree">
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
     <div class="row">
         <div class="col col-xx">
             <button type="button" class="btn btn-outline-secondary btn-arrows" id="{{modal.id}}arrow{{ms.no}}">
