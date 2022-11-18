@@ -51,6 +51,7 @@ module.exports = {
     "toggleFormulaButtonOff": handlers.toggleFormulaButtonOff,
     "toggleButton": handlers.toggleButton,
     "toggleSelect": handlers.toggleSelect,
+    "toggleSelectPoly": handlers.toggleSelectPoly,
     "selectElement": handlers.selectElement,
     "enablyStickyDivs": handlers.enablyStickyDivs,
     "disableStickyDivs": handlers.disableStickyDivs,
