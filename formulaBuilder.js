@@ -10,7 +10,7 @@ class formulaControl extends baseElement {
         <div class="row">
             <div class="col col-xx"></div>
             <div class="col col-rr">
-                <h6>Formula Builder: Click on a button and move variables to create a formula. Clicking a selected button will toggle state. Mouse over a button for help. Note: You cannot deactivate the All N Ways button. {{if(options.ms.required)}}<span class="required">*</span>{{/if}}</h6>
+                <h6>Formula Builder:{{if(options.ms.required)}}<span class="required">*</span>{{/if}}<br>Click on a button and move variables to create a formula.<br> Clicking a selected button will toggle state.<br> To insert at a designated position, plave your cursor in that position<br> Mouse over a button for help.<br> Note: You cannot deactivate the All N Ways button.</h6>
             </div>
         </div>
         <div class="row">
@@ -79,10 +79,9 @@ class formulaControl extends baseElement {
             <div class="row pr-15">
                 <div class="col col-2 p-0">
                 <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
-                    val="%in%" onclick="toggleButton(event, true)" ondblclick="toFormula(event)"
+                    val="%in%" onclick="toFormula(event)"
                     data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Click the %in% button then move the variables you want 
-                    to separate with %in%. To insert just %in%, double click it">
+                    title="Click on the %in% button to insert %in%">
                     %in%
                 </button>
                 </div>

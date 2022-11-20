@@ -60,7 +60,7 @@ function _to_compute(ev, dst) {
     el = ev.target.parentElement
   }
   if (dst[0].tagName == 'DIV') {
-    _toCodeMirrorCompute([], dst.find('.CodeMirror')[0].CodeMirror, el.getAttribute("val"))
+    _toCodeMirrorCompute([], dst.find('.CodeMirror')[0].CodeMirror,undefined, el.getAttribute("val"))
   } else {
     _to_formula([], dst, el.getAttribute("val"))
   }
@@ -228,6 +228,7 @@ function _toCodeMirrorCompute(objects, editor, newline, active_val) {
   if (!newline) {
     var newline = _form_new_formula_value(objects, newpos.ch, editor.getValue(), active_val, true)
   }
+
   doc.replaceRange(newline, newpos)
   doc.setValue(doc.getValue().replace(/  +/g, ' '))
   newpos.ch = newpos.ch + newline.trim().length
@@ -305,14 +306,6 @@ function toggleSelectPoly(ev, dest) {
   {
     $(ev.target).removeClass("activated")
   }
-  let temp = 10
-  
- // ev.preventDefault();
- // ev.stopPropagation();
- //$(`#${dest}`).addClass("activated")
- //$(`#${key}_createRepMeasures`).trigger("click")
-
-  //toggleFormulaButtonOff(ev.target)
 }
 
 
@@ -460,7 +453,7 @@ var complexerapDynamic ={
     'Concatenate': ['', ', sep ="" )'],
   }
   if (objects.length > 1 && multiVariables.includes(active_val)) {
-    dialog.showErrorBox("Formula Error", "The function " + activeSign + " does not support multiple variables, please select one variable and retry")
+    dialog.showErrorBox("Formula Error", "The function " + active_val + " does not support multiple variables, please select one variable and retry")
     return formula_value
   }
   var formula_addon = ""
@@ -926,7 +919,15 @@ module.exports.toFormula = (ev) => {
   _to_compute(ev, $(ev.target).closest('.formula-builder').find("textarea").attr('id'))
 }
 module.exports.toFocusedInput = (ev) => {
-  _to_compute(ev, $(ev.target).closest('div.tab-content').closest('.row.mb-1').next().find("div.col-10.focus"))
+  if ($(ev.target).closest('div.tab-content').closest('.row.mb-1').next().find("div.col-10.focus")[0] ==undefined)
+  { 
+    dialog.showErrorBox("Error", "An input control associated with a if or then condition needs to be selected. Use your mouse to select a position in the if or then control and retry.")
+  }
+  else
+  {
+    _to_compute(ev, $(ev.target).closest('div.tab-content').closest('.row.mb-1').next().find("div.col-10.focus"))
+  }
+
 }
 module.exports.enablyStickyDivs = (modal_id) => {
   $(`#${modal_id} .sticky-left`).closest('div.modal-content').on("scroll", function (ev) {
