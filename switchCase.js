@@ -23,10 +23,10 @@ class switchCase extends baseElement {
     </div>
     <div class="row">
         <div class="col-3">
-            <button class='btn btn-secondary .btn-Formulaifelse btn-submenu-text' onclick='addRowToSwitchCase("{{modal.id}}_{{ms.no}}")'><i class="fas fa-plus"></i>IF THEN</button>
+            <button class='btn btn-secondary h6 btn-submenu-text' onclick='addRowToSwitchCase("{{modal.id}}_{{ms.no}}")'><i class="fas fa-plus"></i>IF THEN</button>
         </div>
         <div class="col-3">
-            <button class='btn btn-secondary .btn-Formulaifelse btn-submenu-text' onclick='addElseToSwitchCase("{{modal.id}}_{{ms.no}}")'><i class="fas fa-plus"></i>ELSE</button>
+            <button class='btn btn-secondary h6 btn-submenu-text' onclick='addElseToSwitchCase("{{modal.id}}_{{ms.no}}")'><i class="fas fa-plus"></i>ELSE</button>
         </div>
         <div class="col-6">
             <label for="{{modal.id}}_{{ms.no}}" class="mt-2 mr-2 small-label">{{ms.label}} {{if(options.ms.required)}}<span class="required">*</span>{{/if}}</label>
