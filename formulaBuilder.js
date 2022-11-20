@@ -9,8 +9,11 @@ class formulaControl extends baseElement {
         <div class="formula-builder">
         <div class="row">
             <div class="col col-xx"></div>
-            <div class="col col-rr">
-                <h6>Formula Builder:{{if(options.ms.required)}}<span class="required">*</span>{{/if}}<br>Click on a button and move variables to create a formula.<br> Clicking a selected button will toggle state.<br> To insert at a designated position, plave your cursor in that position<br> Mouse over a button for help.<br> Note: You cannot deactivate the All N Ways button.</h6>
+            <div class="col col-rr mb-2">
+            <h6>{{if(options.ms.label !=undefined)}}{{ms.label}}{{#else}}Formula Builder:{{/if}}{{if(options.ms.required)}}<span class="required">*</span>{{/if}}</h6>
+            <div class="small-label">
+                    Click on a button below and drag and drop variables to create an expression.<br> Clicking a selected button will toggle its state.<br> To insert at a position, place the cursor in that position and drag & drop/move variable(s).<br> Mouse over a button for help.<br> You cannot toggle the All N way button.
+            </div>
             </div>
         </div>
         <div class="row">
@@ -219,7 +222,9 @@ class formulaControl extends baseElement {
     `
     constructor(modal, config) {
         super(modal, config);
-        this.label = config.label
+        if (config.label !== undefined) {
+            this.label = config.label;
+        }
         if(!config.hasOwnProperty("default"))
         {
             config.default ="plus"
