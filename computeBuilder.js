@@ -7,11 +7,14 @@ class computeBuilder extends baseElement{
     id;
     required = false;
     htmlTemplate = `
-    <div builder_id ="{{modal.id}}_{{ms.no}}"  class="formula-builder">
+    <div builder_id ="{{modal.id}}_{{ms.no}}"  class="formula-builder mb-3">
         <div class="row">
             <div class="col col-xx"></div>
-            <div class="col col-rr">
-                <h6>{{ms.label}}{{if(options.ms.required)}}<span class="required">*</span>{{/if}}</h6>
+            <div class="col col-rr mb-2">
+            <h6>{{if(options.ms.label !="")}}{{ms.label}}{{#else}}Expression Builder:{{/if}}{{if(options.ms.required)}}<span class="required">*</span>{{/if}}</h6>
+            <div class="small-label">
+                    Click on a button below and drag and drop variables to create an expression.<br> Clicking a selected button will toggle its state.<br> To insert at a position, place the cursor in that position and drag & drop/move variable(s).<br> Mouse over a button for help.
+            </div>  
             </div>
         </div>
         <div class="row">
@@ -343,6 +346,17 @@ class computeBuilder extends baseElement{
                                     is.na
                                 </button>
                             </div>
+
+                            <div class="col p-0">
+                            <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
+                                val="%in%" onclick="toFormula(event)"
+                                data-toggle="tooltip" data-html="true" data-placement="top"   
+                                title="Click on the %in% button to insert %in%">
+                                %in%
+                            </button>
+                            </div>
+
+
                         </div>
                     </div>
                     <div class="tab-pane tab-pane-top fade" id="{{modal.id}}_{{ms.no}}_tab3" role="tabpanel" aria-labelledby="{{modal.id}}_{{ms.no}}_tab3">
@@ -657,7 +671,7 @@ class computeBuilder extends baseElement{
                 </div>
                 </div>
                 </div>
-                <div class="tab-pane tab-pane-top fade" id="{{modal.id}}_{{ms.no}}_tab9" role="tabpanel" aria-labelledby="{{modal.id}}_{{ms.no}}_tab9">
+            <div class="tab-pane tab-pane-top fade" id="{{modal.id}}_{{ms.no}}_tab9" role="tabpanel" aria-labelledby="{{modal.id}}_{{ms.no}}_tab9">
                 <div class="row pr-15">
                 <div class="col p-0">
                 <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
@@ -674,7 +688,7 @@ class computeBuilder extends baseElement{
                     title="Click Day of Month and move a date variable that you want to extract the day of the month(1-31) from, to insert generic code double click">
                     <b>Day of Month</b>
                 </button>
-            </div>
+            </div> 
                 <div class="col p-0">
                         <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
                             val="Day of Year" onclick="toggleButton(event, true)" ondblclick="toFormula(event)" 
@@ -683,6 +697,9 @@ class computeBuilder extends baseElement{
                             <b>Day of Year</b>
                         </button>
                 </div>
+                </div>
+                <div class="row pr-15">
+
                 <div class="col p-0">
                         <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
                             val="Week of Year" onclick="toggleButton(event, true)" ondblclick="toFormula(event)" 
@@ -718,15 +735,16 @@ class computeBuilder extends baseElement{
                     title="Click Quarters and move a date variable that you want to extract the Quarters(Q1, Q2..) from, to insert generic code double click">
                     <b>Quarters</b>
                 </button>
-            </div>
-            <div class="col p-0">
+                </div>
+                <div class="col p-0">
                 <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
                     val="Year(XXXX)" onclick="toggleButton(event, true)" ondblclick="toFormula(event)" 
                     data-toggle="tooltip" data-html="true" data-placement="top"   
                     title="Click Year(XXXX) and move a date variable that you want to extract the Year(1980) from, to insert generic code double click">
                     <b>Year(XXXX)</b>
                 </button>
-            </div>
+                </div>
+                
                 <div class="col p-0">
                         <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
                             val="Year(XX)" onclick="toggleButton(event, true)" ondblclick="toFormula(event)" 
@@ -735,38 +753,43 @@ class computeBuilder extends baseElement{
                             <b>Year(XX)</b>
                         </button>
                 </div>
-                <div class="col p-0">
-                        <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
-                            val="Hour(00-12)" onclick="toggleButton(event, true)" ondblclick="toFormula(event)" 
-                            data-toggle="tooltip" data-html="true" data-placement="top"   
-                            title="Click Hour(00-12) and move a date variable that you want to extract the Hour(00) from, to insert generic code double click">
-                            <b>Hour(00-12)</b>
-                        </button>
                 </div>
-                <div class="col p-0">
+
+                <div class="row pr-15"> 
+                    <div class="col p-0">
+                            <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
+                                val="Hour(00-12)" onclick="toggleButton(event, true)" ondblclick="toFormula(event)" 
+                                data-toggle="tooltip" data-html="true" data-placement="top"   
+                                title="Click Hour(00-12) and move a date variable that you want to extract the Hour(00) from, to insert generic code double click">
+                                <b>Hour(00-12)</b>
+                            </button>
+                    </div>
+
+
+                    <div class="col p-0">
+                            <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
+                                val="Hour(00-23)" onclick="toggleButton(event, true)" ondblclick="toFormula(event)" 
+                                data-toggle="tooltip" data-html="true" data-placement="top"   
+                                title="Click Hour(00-23) and move a date variable that you want to extract the Hour from, to insert generic code double click">
+                                <b>Hour(00-23)</b>
+                            </button>
+                    </div>
+                    <div class="col p-0">
+                            <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
+                                val="Minutes" onclick="toggleButton(event, true)" ondblclick="toFormula(event)" 
+                                data-toggle="tooltip" data-html="true" data-placement="top"   
+                                title="Click Minutes and move a date variable that you want to extract the minutes from, to insert generic code double click">
+                                <b>Minutes</b>
+                            </button>
+                    </div>
+                    <div class="col p-0">
                         <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
-                            val="Hour(00-23)" onclick="toggleButton(event, true)" ondblclick="toFormula(event)" 
-                            data-toggle="tooltip" data-html="true" data-placement="top"   
-                            title="Click Hour(00-23) and move a date variable that you want to extract the Hour from, to insert generic code double click">
-                            <b>Hour(00-23)</b>
+                        val="Secs" onclick="toggleButton(event, true)" ondblclick="toFormula(event)" 
+                        data-toggle="tooltip" data-html="true" data-placement="top"   
+                        title="Click Secs and move a date variable that you want to extract the seconds from, to insert generic code double click">
+                        <b>Secs</b>
                         </button>
-                </div>
-                <div class="col p-0">
-                        <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
-                            val="Minutes" onclick="toggleButton(event, true)" ondblclick="toFormula(event)" 
-                            data-toggle="tooltip" data-html="true" data-placement="top"   
-                            title="Click Minutes and move a date variable that you want to extract the minutes from, to insert generic code double click">
-                            <b>Minutes</b>
-                        </button>
-                </div>
-                <div class="col p-0">
-                <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
-                    val="Secs" onclick="toggleButton(event, true)" ondblclick="toFormula(event)" 
-                    data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Click Secs and move a date variable that you want to extract the seconds from, to insert generic code double click">
-                    <b>Secs</b>
-                </button>
-        </div>
+                    </div>
                 </div>
                 </div>
                 <div class="tab-pane tab-pane-top fade" id="{{modal.id}}_{{ms.no}}_tab11" role="tabpanel" aria-labelledby="{{modal.id}}_{{ms.no}}_tab11">
@@ -824,7 +847,7 @@ class computeBuilder extends baseElement{
                         extractable="true" extractionRule="{{ms.extraction}}"  
                         id="{{modal.id}}_{{ms.no}}" 
                         modal_id="{{modal.id}}" no="{{ms.no}}" 
-                        placeholder="Formula appears here" 
+                        placeholder="{{if(options.ms.placeHolder != undefined)}}{{ms.placeHolder}}{{#else}}Create an expression here:{{/if}}" 
                         ondragover="allowDrop(event)" 
                         ondrop="dropToTextArea(event)"></textarea>
             </div>
@@ -836,6 +859,9 @@ class computeBuilder extends baseElement{
         this.label = config.label
         if (config.required) {
             this.required = config.required;
+        }
+        if (config.placeHolder !== undefined) {
+            this.placeHolder = config.placeHolder;
         }
         this.content = Sqrl.Render(this.htmlTemplate, { modal: modal, ms: config })
         this.id = `${modal.id}_${config.no}`

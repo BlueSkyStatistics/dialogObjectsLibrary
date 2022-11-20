@@ -11,16 +11,25 @@ class switchCase extends baseElement {
     type_expected = null;
     overwrite = null;
     label = null
-    no = null
-    htmlTemplate = `<div class="row">
+    no = null   
+    htmlTemplate = `
+    <div class="row mt-3">
+        <div class="col destination">
+        <h6>Multiple Condition Builder:{{if(options.ms.required)}}<span class="required">*</span>{{/if}}</h6>
+            <div class="small-label">
+                    Click on a button and drag and drop variables to create an expression.<br> Clicking a selected button will toggle its state.<br> To insert at a designated position, drag and drop directly to that position.<br> Mouse over a button for help.
+            </div>  
+        </div>    
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <button class='btn btn-secondary .btn-Formulaifelse btn-submenu-text' onclick='addRowToSwitchCase("{{modal.id}}_{{ms.no}}")'><i class="fas fa-plus"></i>IF THEN</button>
+        </div>
+        <div class="col-3">
+            <button class='btn btn-secondary .btn-Formulaifelse btn-submenu-text' onclick='addElseToSwitchCase("{{modal.id}}_{{ms.no}}")'><i class="fas fa-plus"></i>ELSE</button>
+        </div>
         <div class="col-6">
             <label for="{{modal.id}}_{{ms.no}}" class="mt-2 mr-2 small-label">{{ms.label}} {{if(options.ms.required)}}<span class="required">*</span>{{/if}}</label>
-        </div>
-        <div class="col-3">
-            <button class='btn btn-secondary btn-top-menu btn-submenu-text' onclick='addRowToSwitchCase("{{modal.id}}_{{ms.no}}")'><i class="fas fa-plus"></i> add condition</button>
-        </div>
-        <div class="col-3">
-            <button class='btn btn-secondary btn-top-menu btn-submenu-text' onclick='addElseToSwitchCase("{{modal.id}}_{{ms.no}}")'><i class="fas fa-plus"></i> add else</button>
         </div>
     </div>
     <div class="row">
@@ -146,8 +155,8 @@ class switchCase extends baseElement {
                                 formula-btn w-100 m-0 activated" val="+" 
                                 onclick="toggleButton(event, true)" ondblclick="toFocusedInput(event)"
                                 data-toggle="tooltip" data-html="true" data-placement="top"   
-                                title="Click the <b>+</b> symbol then move the variables you want 
-                                to separate with <b>+</b>. To insert just <b>+</b> , double click it">
+                                title="Click the + symbol then move the variables you want 
+                                to separate with +. To insert just + , double click it">
                                 <i class="fas fa-plus"></i>
                             </button>
                         </div>
@@ -155,8 +164,8 @@ class switchCase extends baseElement {
                             <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
                                 val="-" onclick="toggleButton(event, true)" ondblclick="toFocusedInput(event)"
                                 data-toggle="tooltip" data-html="true" data-placement="top"   
-                                title="Click the <b>-</b> symbol then move the variables you want 
-                                to separate with <b>-</b>. To insert just <b>-</b>, double click it">
+                                title="Click the - symbol then move the variables you want 
+                                to separate with -. To insert just -, double click it">
                                 <i class="fas fa-minus"></i>
                             </button>
                         </div>
@@ -164,8 +173,8 @@ class switchCase extends baseElement {
                             <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
                             val="*" onclick="toggleButton(event, true)" ondblclick="toFocusedInput(event)"
                             data-toggle="tooltip" data-html="true" data-placement="top"   
-                            title="Click the <b>*</b> symbol then move the variables you want 
-                            to separate with <b>*</b>. To insert just <b>*</b>, double click it">
+                            title="Click the * symbol then move the variables you want 
+                            to separate with *. To insert just *, double click it">
                                 <i class="fas fa-asterisk"></i>
                             </button>
                         </div>
@@ -173,8 +182,8 @@ class switchCase extends baseElement {
                             <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
                             val="/" onclick="toggleButton(event, true)"  ondblclick="toFocusedInput(event)"
                             data-toggle="tooltip" data-html="true" data-placement="top"   
-                            title="Click the <b>/</b> symbol then move the variables you want to separate 
-                            with <b>/</b>. To insert just <b>/</b>, double click it">
+                            title="Click the / symbol then move the variables you want to separate 
+                            with /. To insert just  /, double click it">
                                 /
                             </button>
                         </div>
@@ -821,9 +830,8 @@ class switchCase extends baseElement {
     </div>
     <div id="{{modal.id}}_{{ms.no}}" {{if(options.ms.ml)}}class="ml-{{ms.ml}}"{{/if}}
          extractable=true bs-type="switchcase" no="{{ms.no}}" extractionRule="{{ms.extraction}}"
-         style="height: 300px; overflow: auto">
-        
-        <div class="row bg-gray m-1 mr-3 p-2" el_index=0>
+         style="overflow: auto">
+        <div class="row bg-gray m-1 p-2" el_index=0>
             <div class="col-11">
                 <div class="row">
                     <div class="col-2">
