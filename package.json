@@ -4,7 +4,7 @@
     "description": "Elements Librarty",
     "keywords": [],
     "main": "library.js",
-    "version": "1.1.1",
+    "version": "1.1.0",
     "author": "BlueSky Statistics",
     "scripts": {},
     "dependencies": {
