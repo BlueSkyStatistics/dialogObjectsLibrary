@@ -57,7 +57,17 @@ class formulaControl extends baseElement {
                         /
                     </button>
                 </div>
-                <div class="col p-0">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+    <div class="col col-xx"></div>
+        <div class="col col-rr">
+            <div class="row pr-15">
+				<div class="col p-0">
                     <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
                         val="(" onclick="toFormula(event)"
                         data-toggle="tooltip" data-html="true" data-placement="top"   
@@ -73,31 +83,24 @@ class formulaControl extends baseElement {
                         )
                     </button>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col col-xx"></div>
-        <div class="col col-rr">
-            <div class="row pr-15">
-                <div class="col col-2 p-0">
-                <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
-                    val="%in%" onclick="toFormula(event)"
-                    data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Click on the %in% button to insert %in%">
-                    %in%
-                </button>
+                <div class="col p-0">
+					<button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
+						val="%in%" onclick="toFormula(event)"
+						data-toggle="tooltip" data-html="true" data-placement="top"   
+						title="Click on the %in% button to insert %in%">
+						%in%
+					</button>
                 </div>
-                <div class="col col-1 p-0">
-                <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" val="|" 
-                    onclick="toFormula(event)"
-                    data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Click the | button to insert it">
-                    |
-                </button>
-                 </div>
-                    <div class="col col-1 p-0">
-                        <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" val=":" 
+                <div class="col p-0">
+					<button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" val="|" 
+						onclick="toFormula(event)"
+						data-toggle="tooltip" data-html="true" data-placement="top"   
+						title="Click the | button to insert it">
+						|
+					</button>
+                </div>
+                <div class="col p-0">
+                    <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" val=":" 
                             onclick="toggleButton(event, true)" ondblclick="toFormula(event)"
                             data-toggle="tooltip" data-html="true" data-placement="top"   
                         title="Click the : button then move the variables you 
@@ -105,12 +108,19 @@ class formulaControl extends baseElement {
                         double click it">
                         :   
                     </button>
-                </div>
-                <div class="col col-3 p-0">
-                    <select class="custom-select formula-select m-0" onclick="toggleButton(event)" onchange="toggleButton(event)"
-                        data-toggle="tooltip" data-html="true" data-placement="top"   
-                        title="Click the All N-way option and then move the variables to create N-way interactions. To deactivate click another button.">
-                        <option value="2">All 2 ways</option>
+				</div>
+                
+            </div>
+        </div>
+</div>
+<div class="row">
+    <div class="col col-xx"></div>
+        <div class="col col-rr">
+            <div class="row pr-15">		
+				<div class="col p-0" >
+                    <select class="custom-select formula-select m-0" style= {  text-align-last:center;} onclick="toggleButton(event)" onchange="toggleButton(event)"
+                        data-toggle="tooltip" data-html="true" data-placement="top" style:{ margin: 20px auto;}   
+                        title="Click the All N-way option and then move the variables to create N-way interactions. To deactivate click another button.">                        <option value="2">All 2 ways</option>
                         <option value="3">All 3 ways</option>
                         <option value="4">All 4 ways</option>
                         <option value="5">All 5 ways</option>
@@ -121,7 +131,7 @@ class formulaControl extends baseElement {
                         <option value="10">All 10 ways</option>
                     </select>
                 </div>
-                <div class="col col-5 p-0">
+                <div class="col p-0">
                 <div class="formula-btn pl-1 m-0" val="^" onclick="toggleSelectPoly(event,&quot;{{modal.id}}_{{ms.no}}_polyTerms&quot; )">
                     Polynomial terms
                     <input class="w-25 formula-select formula-options" type="number" id="{{modal.id}}_{{ms.no}}_polyTerms" 
@@ -130,16 +140,41 @@ class formulaControl extends baseElement {
                         data-toggle="tooltip" data-html="true" data-placement="top"   
                         title="Select a number, click the button and move the variables to add degree N polynomial terms">
                 </div>
-                </div>
+                </div>   
             </div>
         </div>
-    </div>
+</div>
+<div class="row">
+        <div class="col col-xx"></div>
+        <div class="col col-rr">
+            <div class="row pr-15">
+            <div class="col  p-0">
+                <div class="formula-btn pl-1 m-0" val="df for splines">
+                    df for splines
+                    <input class="w-25 formula-select formula-options" type="number" id="{{modal.id}}_{{ms.no}}_splinesDeg" 
+                    bs-type="text" min="0" max="10000" step="1"  default="5" value="5" 
+                    data-toggle="tooltip" data-html="true" data-placement="top"   
+                    title="Specify a degree of freedom for splines">
+                </div>
+            </div>
+            <div class="col p-0">
+                    <div class="formula-btn pl-1 m-0" val="Polynomial degree">
+                    Polynomial degree
+                    <input class="w-25 formula-select formula-options" type="number" id="{{modal.id}}_{{ms.no}}_polyDeg" 
+                    bs-type="text" min="0" max="10000" step="1"  default="5" value="5" 
+                    data-toggle="tooltip" data-html="true" data-placement="top"   
+                    title="Specify a polynomial degree">
+                    </div>
+                </div>     
+            </div>
+        </div>
+</div>
     
-    <div class="row">
+<div class="row">
     <div class="col col-xx"></div>
     <div class="col col-rr">
             <div class="row pr-15">
-                <div class="col col-3 p-0">
+                <div class="col p-0">
                     <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
                         val="B-spline" onclick="toggleButton(event, true)" ondblclick="toFormula(event)"
                         data-toggle="tooltip" data-html="true" data-placement="top"   
@@ -147,22 +182,13 @@ class formulaControl extends baseElement {
                         <b>B-spline</b>
                     </button>
                 </div>
-                <div class="col col-3 p-0">
+                <div class="col p-0">
                     <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" val="natural spline" 
                         onclick="toggleButton(event, true)" ondblclick="toFormula(event)"
                         data-toggle="tooltip" data-html="true" data-placement="top"   
                         title="Click natural spline then move one or more variables. To insert generic code, double click">
                         <b>Natural spline</b>
                     </button>
-                </div>
-                <div class="col col-6 p-0">
-                    <div class="formula-btn pl-1 m-0" val="df for splines">
-                    df for splines
-                    <input class="w-50 formula-select formula-options" type="number" id="{{modal.id}}_{{ms.no}}_splinesDeg" 
-                    bs-type="text" min="0" max="10000" step="1"  default="5" value="5" 
-                    data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Specify a degree of freedom for splines">
-                    </div>
                 </div>
             </div>
     </div>
@@ -172,7 +198,7 @@ class formulaControl extends baseElement {
     <div class="col col-xx"></div>
     <div class="col col-rr">
             <div class="row pr-15">
-                <div class="col col-4 p-0">
+                <div class="col p-0">
                     <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" 
                         val="Orthogonal polynomial" onclick="toggleButton(event, true)" ondblclick="toFormula(event)"
                         data-toggle="tooltip" data-html="true" data-placement="top"   
@@ -180,7 +206,7 @@ class formulaControl extends baseElement {
                         <b>Orthogonal polynomial</b>
                     </button>
                 </div>
-                <div class="col col-3 p-0">
+                <div class="col p-0">
                     <button type="button" class="btn btn-outline-secondary formula-btn w-100 m-0" val="Raw polynomial" 
                     onclick="toggleButton(event, true)" ondblclick="toFormula(event)"
                         data-toggle="tooltip" data-html="true" data-placement="top"   
@@ -188,15 +214,7 @@ class formulaControl extends baseElement {
                         <b>Raw polynomial</b>
                     </button>
                 </div>
-                <div class="col col-5 p-0">
-                    <div class="formula-btn pl-1 m-0" val="Polynomial degree">
-                    Polynomial degree
-                    <input class="w-25 formula-select formula-options" type="number" id="{{modal.id}}_{{ms.no}}_polyDeg" 
-                    bs-type="text" min="0" max="10000" step="1"  default="5" value="5" 
-                    data-toggle="tooltip" data-html="true" data-placement="top"   
-                    title="Specify a polynomial degree">
-                    </div>
-                </div>
+                
             </div>
     </div>
 </div>
