@@ -231,7 +231,7 @@ function _toCodeMirrorCompute(objects, editor, newline, active_val) {
 
   doc.replaceRange(newline, newpos)
   doc.setValue(doc.getValue().replace(/  +/g, ' '))
-  newpos.ch = newpos.ch + newline.trim().length
+  newpos.ch = newpos.ch + newline.trim().length+1
   editor.setCursor(newpos)
 }
 function createCMFromTestArea(modal_id) {
@@ -467,9 +467,15 @@ var complexerapDynamic ={
     }
     formula_addon = _calculate_position(formula_value, formula_addon, cursorPosition, sign, additive, onlyIncrement)
   } else if (insertive.indexOf(active_val) > -1) {
+    if (onlyIncrement) {
+      formula_addon = active_val
+    } 
+    else
+    {
     var last_ = formula_value.slice(0, cursorPosition)
     var first_ = formula_value.slice(cursorPosition, formula_value.length)
     formula_addon = `${last_} ${active_val}   ${first_}`
+    }
   } else if (Object.keys(complexinsert).indexOf(active_val) > -1) {
     var last_ = formula_value.slice(0, cursorPosition)
     var first_ = formula_value.slice(cursorPosition, formula_value.length)
