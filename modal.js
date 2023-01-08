@@ -122,6 +122,7 @@ class modal {
 
     extractData() {
         var code_vars = {}
+        code_vars ["BSkyThemes"] = themeRsyntax;
         $(`#${this.id}`).find((`[extractable=true]`)).each(function (index, item) {
             code_vars[item.getAttribute("no")] = common.transform(common.getVal(item.getAttribute("id")), item.getAttribute("extractionRule"))
             if (code_vars[item.getAttribute("no")] && item.hasAttribute("wrapped")) {
