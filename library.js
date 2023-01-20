@@ -38,7 +38,7 @@ var SaveAppSettings = require('./settingsOptions').SaveAppSettings
 
 
 const sessionStore = new Store({name:`constants`});
-if (sessionStore.get("appVersion") == "10.2.1") {
+if (sessionStore.get("appVersion") == "10.2.1" || sessionStore.get("appVersion") == undefined) {
     var modules = JSON.parse(fs.readFileSync(path.join(sessionStore.get("appRoot").replace("app.asar", ""), "modules.json"), 'utf8'))
     for (var i=0; i < modules.core.length; i++) {
         modules.core[i].update = "manual"
