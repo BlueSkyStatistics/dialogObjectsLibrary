@@ -37,6 +37,22 @@ var DatabaseOpt = require('./settingsOptions').DatabaseOpt
 var SaveAppSettings = require('./settingsOptions').SaveAppSettings
 
 
+const sessionStore = new Store({name:`constants`});
+if (sessionStore.get("appVersion") == "10.2.1") {
+    var modules = JSON.parse(fs.readFileSync(path.join(sessionStore.get("appRoot").replace("app.asar", ""), "modules.json"), 'utf8'))
+    for (var i=0; i < modules.core.length; i++) {
+        modules.core[i].update = "manual"
+    }
+    for (var i=0; i < modules.extentions.length; i++) {
+        modules.extentions[i].update = "manual"
+    }
+    for (var i=0; i < modules.dialogs.length; i++) {
+        modules.dialogs[i].update = "manual"
+    }
+    fs.writeFileSync(path.join(sessionStore.get("appRoot").replace("app.asar", ""), "modules.json"), JSON.stringify(modules, null, 4), 'utf8')
+}
+
+
 module.exports = {
     "drag": handlers.drag,
     "drop": handlers.drop,
