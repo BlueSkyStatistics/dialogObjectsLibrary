@@ -1,3 +1,4 @@
+const { ipcRenderer } = require('electron')
 const common = require('./common')
 var handlers = require('./handlers')
 var modal = require('./modal').element
@@ -50,6 +51,7 @@ if (sessionStore.get("appVersion") == "10.2.1" || sessionStore.get("appVersion")
         modules.dialogs[i].update = "manual"
     }
     fs.writeFileSync(path.join(sessionStore.get("appRoot").replace("app.asar", ""), "modules.json"), JSON.stringify(modules, null, 4), 'utf8')
+    ipcRenderer.invoke("restart-app")
 }
 
 
