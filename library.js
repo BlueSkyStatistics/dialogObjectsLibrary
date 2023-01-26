@@ -60,10 +60,15 @@ if (sessionStore.get("appVersion") == "10.2.1" || sessionStore.get("appVersion")
             restart_required = true
         }
     }
-    fs.writeFileSync(path.join(sessionStore.get("appRoot").replace("app.asar", ""), "modules.json"), JSON.stringify(modules, null, 4), 'utf8')
-    if (restart_required) {
-        ipcRenderer.invoke("restart-app")
+    try{
+        if (restart_required) {
+            fs.writeFileSync(path.join(sessionStore.get("appRoot").replace("app.asar", ""), "modules.json"), JSON.stringify(modules, null, 4), 'utf8')
+            ipcRenderer.invoke("restart-app")
+        }
+    } catch (err) {
+        ipcRenderer.invoke("errormessage", {title: 'Write access error', message: 'Seems like you do not have write access to derictory with installed BlueSky Statistics, you may need to update the application'})
     }
+    
 }
 
 
