@@ -227,18 +227,16 @@ function _to_formula(objects, dst_id, active_val) {
   formula_addon = results.formula_addon
   try {
     $(`#${dst_id}`).val(formula_addon)
-    $(`#${dst_id}`).prop('selectionEnd', cursorPosition + results.lengthInserted +1);
-    $(`#${dst_id}`).prop('selectionStart', cursorPosition);
-    $(`#${dst_id}`).trigger('focus')   
+    
     //Code for optionally storing the cursor position
     //$(`#${dst_id}`).attr("originalCursorPosition", cursorPosition);
   } catch (ex) {
     dst_id.val(formula_addon)
     dst_id[0].scrollLeft = dst_id[0].scrollWidth;
   }
-  $(`#${dst_id}`)[0].selectionStart = cursorPosition + formula_addon.length - formula_value.length
-  $(`#${dst_id}`)[0].selectionEnd= cursorPosition + formula_addon.length - formula_value.length
-  $(`#${dst_id}`).trigger('focus')
+  $(`#${dst_id}`).prop('selectionEnd', cursorPosition + results.lengthInserted +1);
+  $(`#${dst_id}`).prop('selectionStart', cursorPosition);
+  $(`#${dst_id}`).trigger('focus')  
 }
 function _drop_to_compute(ev, parentID) {
   ev.preventDefault();
@@ -549,7 +547,8 @@ var complexerapDynamic ={
     dialog.showErrorBox("Formula Error", "The function " + active_val + " does not support multiple variables, please select one variable and retry")
     if (onlyIncrement)
     {
-    return ""
+      results = { formula_addon: "", lengthInserted:0}
+    return results.formula_addon  
     } else
     {
       results = { formula_addon: formula_value, lengthInserted:0}
@@ -599,8 +598,6 @@ var complexerapDynamic ={
       lengthInserted = 1+ active_val.length
     results = { formula_addon: formula_addon, lengthInserted:lengthInserted}
     }
-    
-
   } else if (Object.keys(complexinsert).indexOf(active_val) > -1) {
     var last_ = formula_value.slice(0, cursorPosition)
     var first_ = formula_value.slice(cursorPosition, formula_value.length)
