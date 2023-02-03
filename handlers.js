@@ -236,6 +236,9 @@ function _to_formula(objects, dst_id, active_val) {
     dst_id.val(formula_addon)
     dst_id[0].scrollLeft = dst_id[0].scrollWidth;
   }
+  $(`#${dst_id}`)[0].selectionStart = cursorPosition + formula_addon.length - formula_value.length
+  $(`#${dst_id}`)[0].selectionEnd= cursorPosition + formula_addon.length - formula_value.length
+  $(`#${dst_id}`).trigger('focus')
 }
 function _drop_to_compute(ev, parentID) {
   ev.preventDefault();
