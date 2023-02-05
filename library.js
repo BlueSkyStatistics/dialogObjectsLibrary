@@ -1,4 +1,4 @@
-const { ipcRenderer } = require('electron')
+const { ipcRenderer, dialog } = require('electron')
 const common = require('./common')
 var handlers = require('./handlers')
 var modal = require('./modal').element
@@ -66,7 +66,15 @@ if (sessionStore.get("appVersion") == "10.2.1" || sessionStore.get("appVersion")
             ipcRenderer.invoke("restart-app")
         }
     } catch (err) {
-        ipcRenderer.invoke("errormessage", {title: 'Write access error', message: 'Seems like you do not have write access to derictory with installed BlueSky Statistics, you may need to update the application'})
+        let activeWindow = BrowserWindow.getAllWindows().filter(b => {
+            return b.isVisible()
+        })
+        dialog.showMessageBoxSync(activeWindow, {
+            title: "Write access error", 
+            message: "Seems like you do not have write access to derictory with installed BlueSky Statistics, you may need to update the application", 
+            type: "error", 
+            buttons: ["Submit"]
+        })
     }
     
 }
