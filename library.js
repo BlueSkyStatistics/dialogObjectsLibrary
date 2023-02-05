@@ -66,15 +66,7 @@ if (sessionStore.get("appVersion") == "10.2.1" || sessionStore.get("appVersion")
             ipcRenderer.invoke("restart-app")
         }
     } catch (err) {
-        let activeWindow = BrowserWindow.getAllWindows().filter(b => {
-            return b.isVisible()
-        })
-        dialog.showMessageBoxSync(activeWindow, {
-            title: "Write access error", 
-            message: "Seems like you do not have write access to derictory with installed BlueSky Statistics, you may need to update the application", 
-            type: "error", 
-            buttons: ["Submit"]
-        })
+        
     }
     
 }
