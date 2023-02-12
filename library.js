@@ -80,7 +80,7 @@ module.exports = {
     "moveToSrc": handlers.moveToSrc,
     "modeToDst": handlers.moveToDst,
     "arrangeFocus": handlers.arrangeFocus,
-    "toFormula": handlers.toFormula,
+    "toFormula": handlers.toFormula,  
     "toFocusedInput": handlers.toFocusedInput,
     "dropWrapped": handlers.dropWrapped,
     "dropToInputAditive": handlers.dropToInputAditive,
