@@ -71,7 +71,9 @@ if (sessionStore.get("appVersion") == "10.2.1" || sessionStore.get("appVersion")
     
 }
 
-
+ipcRenderer.on("updateModalHandler", function (event, resp) {
+    handlers.updateModalHandler(resp.element_id, resp.content)
+})
 module.exports = {
     "drag": handlers.drag,
     "drop": handlers.drop,
